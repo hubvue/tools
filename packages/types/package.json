@@ -1,0 +1,29 @@
+{
+  "name": "@cckim/types",
+  "version": "1.0.0",
+  "description": "@cckim/types",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.esm.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [
+    "types"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hubvue/tools.git",
+    "directory": "packages/types"
+  },
+  "bugs": {
+    "url": "https://github.com/hubvue/tools/issues"
+  },
+  "homepage": "https://github.com/hubvue/tools/tree/main/packages/types#readme",
+  "author": "hubvue",
+  "license": "MIT"
+}

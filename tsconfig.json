@@ -19,7 +19,7 @@
     "rootDir": ".",
     "declaration": true,
     "paths": {
-      "@exposure-lib/*": ["packages/*/src"]
+      "@cckim/*": ["packages/*/src"]
     }
   },
   "include": ["packages/*/src"],

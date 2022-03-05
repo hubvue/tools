@@ -1,4 +1,4 @@
-import { First, Tail } from '../'
+import { ArrayFirst, Tail } from '../'
 
 type NSymbol = 0 | 1
 
@@ -61,8 +61,8 @@ type NumberCompare<A extends string, B extends string, T extends string[] = [], 
 type NumberArrayCompareHandler<
   A extends string[],
   B extends string[],
-  FA extends string = First<A>,
-  FB extends string = First<B>,
+  FA extends string = ArrayFirst<A>,
+  FB extends string = ArrayFirst<B>,
   RA extends string[] = Tail<A>,
   RB extends string[] = Tail<B>
 > = 
@@ -72,7 +72,7 @@ type NumberArrayCompareHandler<
       : Res.Failure
     : NumberCompare<FA, FB> extends Res.Tie
       ? NumberArrayCompareHandler<RA, RB>
-      : NumberCompare<First<A>, First<B>>
+      : NumberCompare<ArrayFirst<A>, ArrayFirst<B>>
 
 type NumberArrayCompare<
   A extends string[],

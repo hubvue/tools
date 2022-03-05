@@ -9,9 +9,14 @@ export type Item<T extends unknown[]> = T extends (infer I)[] ? I : never
 export type Length<T extends unknown[]> = T['length']
 
 /**
- * @description get the type of the first child element of an array or tuple type
+ * @description get the type of the first child element of an array type
  */
-export type First<T extends unknown[]> = ((...t: T) => any) extends ((t: infer F, ...r: T)  => any) ? F : never
+export type ArrayFirst<T extends unknown[]> = ((...t: T) => any) extends ((t: infer F, ...r: T)  => any) ? F : never
+
+/**
+ * get the type of the first child element of an tuple type
+ */
+export type TupleFirst<T extends unknown[]> = T extends [unknown, ...unknown[]] ? T[0] : never
 
 /**
  * @description array or tuple types delete the first element
@@ -31,7 +36,7 @@ export type HasTail<T extends unknown[]> = T extends ([] | [unknown]) ? false : 
 /**
  * @description get the type of the last child element of an array or tuple type
  */
-export type Last<T extends unknown[]> = HasTail<T> extends true ? Last<Tail<T>> : First<T>
+export type Last<T extends unknown[]> = HasTail<T> extends true ? Last<Tail<T>> : ArrayFirst<T>
 
 /**
  * @description array or tuple types delete the last child element type

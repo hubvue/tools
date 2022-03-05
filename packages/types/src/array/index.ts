@@ -11,7 +11,7 @@ export type Length<T extends unknown[]> = T['length']
 /**
  * @description get the type of the first child element of an array or tuple type
  */
-export type First<T extends unknown[]> = T extends [unknown, ...unknown[]] ? T[0] : never
+export type First<T extends unknown[]> = ((...t: T) => any) extends ((t: infer F, ...r: T)  => any) ? F : never
 
 /**
  * @description array or tuple types delete the first element

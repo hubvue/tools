@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "esmo ./scripts/build.ts",
-    "build:all": "node ./scripts/build.js --all",
+    "build:all": "esmo ./scripts/build.ts --all",
     "format": "eslint --fix . --ext .js,.ts,.cjs,.mjs",
     "release": "bumpp package.json packages/*/package.json --commit --push --tag"
   },

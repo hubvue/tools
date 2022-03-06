@@ -1,4 +1,5 @@
 export * from './array'
 export * from './comparisons'
 export * from './function'
-export * from './converts'
+export * from './string'
+export * from './utils'

@@ -64,37 +64,29 @@ const getAnswersFromInquirer = async (packagesName) => {
   return packages
 }
 
-const cleanPackagesOldDist = async (packagesName) => {
-  for (let packageName of packagesName) {
-    const distPath = resolve(`packages/${packageName}/dist`)
-    try {
-      const stat = await fs.stat(distPath)
-      if (stat.isDirectory()) {
-        await fs.rm(distPath, {
-          recursive: true,
-        })
-      }
-    } catch (err) {
-      console.log('err', err)
-      console.log(chalk.red(`remove ${packageName} dist dir error!`))
+const cleanDir = async (dir: string) => {
+  try {
+    const stat = await fs.stat(dir)
+    if (stat.isDirectory()) {
+      await fs.rm(dir, {
+        recursive: true,
+      })
     }
-  }
+  } catch(err) {}
+}
+
+const cleanPackagesOldDist = async (packagesName) => {
+  await Promise.all(packagesName.map(name => cleanDir(`packages/${name}/dist`)))
 }
 
 const cleanPackagesDtsDir = async (packageName) => {
   const dtsPath = resolve(`packages/${packageName}/dist/packages`)
-  console.log('dtsPath', dtsPath)
-  try {
-    const stat = await fs.stat(dtsPath)
-    if (stat.isDirectory()) {
-      await fs.rm(dtsPath, {
-        recursive: true,
-      })
-    }
-  } catch (err) {
-    console.log(err)
-    console.log(chalk.red(`remove ${packageName} dist/packages dir error!`))
-  }
+  await cleanDir(dtsPath)
+}
+
+const cleanDist = async () => {
+  const distPath = resolve('dist')
+  cleanDir(distPath)
 }
 
 const pascalCase = (str) => {
@@ -146,7 +138,6 @@ const generateBuildConfigs = (packagesName) => {
 }
 
 const extractDts = (packageName) => {
-  
   const extractorConfigPath = resolve(`packages/${packageName}/api-extractor.json`)
   const extractorConfig =
     ExtractorConfig.loadFileAndPrepare(extractorConfigPath)
@@ -192,6 +183,7 @@ const buildBootstrap = async () => {
   await cleanPackagesOldDist(buildPackagesName)
   const packagesBuildConfig = generateBuildConfigs(buildPackagesName)
   await build(packagesBuildConfig)
+  await cleanDist()
 }
 
 buildBootstrap().catch((err) => {

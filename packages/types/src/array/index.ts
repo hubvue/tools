@@ -59,16 +59,18 @@ export type Prepend<T extends unknown[], P extends unknown> = [P, ...T]
  * @param T Primitive[]
  * @param H? string
  */
-export type Join<T extends Primitive[], H extends string = '', R extends string = ''> = 
+export type Join<T extends Primitive[], H extends string = ''> = JoinHandler<T, H>
+type JoinHandler<T extends Primitive[], H extends string = '', R extends string = ''> = 
   T['length'] extends 0
     ? R
     : HasTail<T> extends true
       ? TupleFirst<T> extends Primitive
-        ? Join<Tail<T>, H, `${R}${TupleFirst<T>}${H}`>
-        : Join<Tail<T>, H, `${R}${H}`>
+        ? JoinHandler<Tail<T>, H, `${R}${TupleFirst<T>}${H}`>
+        : JoinHandler<Tail<T>, H, `${R}${H}`>
     : TupleFirst<T> extends Primitive
       ? `${R}${TupleFirst<T>}`
       : `${R}`
+
 
 /**
  * @description determines if the type exists in an array or tuple type
@@ -77,17 +79,19 @@ export type Join<T extends Primitive[], H extends string = '', R extends string 
  */
 export type Includes<T extends unknown[], V extends unknown> = V extends T[number] ? true : false
 
+
 /**
  * @description determines if the type exists in the array or tuple type, returns the index of the type if it exists, or -1 if it does not.
  * @param T unknown[]
  * @param V unknown
  */
-export type Index<T extends unknown[], V extends unknown, P extends unknown[] = []> = 
+export type Index<T extends unknown[], V extends unknown> = IndexHandler<T, V>
+type IndexHandler<T extends unknown[], V extends unknown, P extends unknown[] = []> = 
   Equal<T['length'], 0> extends true
     ? -1
     : Equal<T[0], V> extends true
       ? P['length']
-      : Index<Tail<T>, V, [...P, TupleFirst<T>]>
+      : IndexHandler<Tail<T>, V, [...P, TupleFirst<T>]>
 
 
 /**
@@ -96,18 +100,57 @@ export type Index<T extends unknown[], V extends unknown, P extends unknown[] = 
  * @param S number?
  * @param E number?
  */
-export type Slice<
+export type Slice<T extends unknown[], S extends number = 0, E extends number = T['length']> = SliceHandler<T, S, E>
+type SliceHandler<
   T extends unknown[],
-  S extends number = 0,
-  E extends number = T['length'],
+  S extends number,
+  E extends number,
   P extends unknown[] = [],
   R extends unknown[] = []
 > = Equal<P['length'], S> extends true
       ? Equal<P['length'], E> extends true
         ? R
-        : Slice<Tail<T>, S, E, [...P, TupleFirst<T>], [...R, TupleFirst<T>]>
+        : SliceHandler<Tail<T>, S, E, [...P, TupleFirst<T>], [...R, TupleFirst<T>]>
       : Equal<R['length'], 0> extends true
-        ? Slice<Tail<T>, S, E, [...P, TupleFirst<T>], R>
+        ? SliceHandler<Tail<T>, S, E, [...P, TupleFirst<T>], R>
         : Equal<P['length'], E> extends true
           ? R
-          : Slice<Tail<T>, S, E, [...P, TupleFirst<T>], [...R, TupleFirst<T>]>
+          : SliceHandler<Tail<T>, S, E, [...P, TupleFirst<T>], [...R, TupleFirst<T>]>
+
+/**
+ * @description merging two arrays
+ * @param T unknown[]
+ * @param O unknown[]
+ */
+export type Concat<T extends unknown[], O extends unknown[]> = [...T, ...O]
+
+/**
+ * @description array flattening
+ * @param T unknown[]
+ */
+export type Fill<T extends unknown[]> = FillHandler<T>
+type FillHandler<T extends unknown[], R extends unknown[] = []> = 
+  Length<T> extends 0
+    ? R
+    : TupleFirst<T> extends unknown[]
+      ? FillHandler<Tail<T>, [...R, ...FillHandler<TupleFirst<T>>]>
+      : FillHandler<Tail<T>, [...R, TupleFirst<T>]>
+
+/**
+ * @description filter out F-compatible types in array types
+ * @param T unknown[]
+ * @param F unknown
+ */
+export type Filter<T extends unknown[], F extends unknown> = FilterHandler<T, F>
+export type FilterHandler<T extends unknown[], F extends unknown, R extends unknown[] = []> = 
+  Length<T> extends 0
+    ? R
+    : TupleFirst<T> extends F
+      ? FilterHandler<Tail<T>, F, [...R, TupleFirst<T>]>
+      : FilterHandler<Tail<T>, T, R>
+
+/**
+ * @description array type inversion
+ * @param T unknown[]
+ */
+export type Reverse<T extends unknown[]> = Length<T> extends 0 ? [] : [...Reverse<Tail<T>>, TupleFirst<T>]

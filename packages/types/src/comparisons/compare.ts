@@ -88,7 +88,7 @@ type SymbolCompareResMap = {
 }
 type SymbolCompare<A extends 0 | 1, B extends 0 | 1> = SymbolCompareResMap[`${A}${B}`]
 
-type CompareHandler<
+type CompareNumber<
   AO extends NumberObject<NSymbol, string[], string[]>,
   BO extends NumberObject<NSymbol, string[], string[]>,
   I = NumberArrayCompare<AO['integer'], BO['integer'], true>,
@@ -101,15 +101,18 @@ type CompareHandler<
 
 /**
  * @description compare the size of numbers
+ * @param A number
+ * @param B number
  */
-export type Compare<
+export type Compare<A extends number, B extends number> = CompareHandler<A, B>
+type CompareHandler<
     A extends number, 
     B extends number, 
     AO extends NumberObject<NSymbol, string[], string[]> = CreateNumberObject<A>, 
     BO extends NumberObject<NSymbol, string[], string[]> = CreateNumberObject<B>,
     IN extends boolean = IsNegative<A>,
     S =  SymbolCompare<AO['symbol'], BO['symbol']>,
-    C = CompareHandler<AO, BO>
+    C = CompareNumber<AO, BO>
   > = 
     S extends Res.Failure ? false :
     S extends Res.Victory ? true :

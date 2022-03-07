@@ -12,9 +12,15 @@ type SplitHandler<T extends string, H extends string = '', R extends string[] = 
       ? SplitHandler<RR, H, [...R, F]>
       : [...R, T]
 
+/**
+ * @description determines if the type exists in string type
+ * @param T unknown[]
+ * @param V unknown
+ */
 export type StringIncludes<T extends string, V extends string> = T extends `${infer _}${V}${infer _}` ? true : false
 
 export type StringIndex<T extends string, V extends string> = 
   T extends `${infer F}${V}${infer _}`
     ? [Split<F>['length'], Pop< Split<`${F}${V}`>>['length']]
     : -1
+

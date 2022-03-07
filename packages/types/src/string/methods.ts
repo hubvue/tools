@@ -29,3 +29,26 @@ export type StringIndex<T extends string, V extends string> =
     ? [Split<F>['length'], Pop< Split<`${F}${V}`>>['length']]
     : -1
 
+/**
+ * @description removing spaces from the head of character types
+ * @param T string
+ */
+export type TrimStart<T extends string> =
+  T extends ` ${infer TT}`
+    ? TrimStart<TT>
+    : T
+
+/**
+ * @description removing trailing spaces from character types
+ * @param T string
+ */
+export type TrimEnd<T extends string> =
+  T extends `${infer TT} `
+    ? TrimEnd<TT>
+    : T
+
+/**
+ * @description removing spaces from the head and tail of character types
+ * @param T string
+ */
+export type Trim<T extends string> = TrimStart<TrimEnd<T>>

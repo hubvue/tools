@@ -128,13 +128,13 @@ export type Concat<T extends unknown[], O extends unknown[]> = [...T, ...O]
  * @description array flattening
  * @param T unknown[]
  */
-export type Fill<T extends unknown[]> = FillHandler<T>
-type FillHandler<T extends unknown[], R extends unknown[] = []> = 
+export type Flat<T extends unknown[]> = FlatHandler<T>
+type FlatHandler<T extends unknown[], R extends unknown[] = []> = 
   Length<T> extends 0
     ? R
     : TupleFirst<T> extends unknown[]
-      ? FillHandler<Tail<T>, [...R, ...FillHandler<TupleFirst<T>>]>
-      : FillHandler<Tail<T>, [...R, TupleFirst<T>]>
+      ? FlatHandler<Tail<T>, [...R, ...FlatHandler<TupleFirst<T>>]>
+      : FlatHandler<Tail<T>, [...R, TupleFirst<T>]>
 
 /**
  * @description filter out F-compatible types in array types
@@ -154,3 +154,27 @@ export type FilterHandler<T extends unknown[], F extends unknown, R extends unkn
  * @param T unknown[]
  */
 export type Reverse<T extends unknown[]> = Length<T> extends 0 ? [] : [...Reverse<Tail<T>>, TupleFirst<T>]
+
+/**
+ * @description returns true when the types in the array are all F-compatible, otherwise false
+ * @param T unknown[]
+ * @param F unknown
+ */
+export type Every<T extends unknown[], F extends unknown> = 
+  Length<T> extends 0
+    ? true
+    : TupleFirst<T> extends F
+      ? Every<Tail<T>, F>
+      : false
+
+/**
+ * @description returns true when any of the types in the array are compatible with the F type, otherwise false
+ * @param T unknown[]
+ * @param F unknown
+ */
+export type Some<T extends unknown[], F extends unknown> = 
+  Length<T> extends 0
+    ? false
+    : TupleFirst<T> extends F
+      ? true
+      : Some<Tail<T>, F>

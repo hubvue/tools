@@ -8,3 +8,5 @@ export type Primitive = string | number | bigint | boolean | null | undefined
  * @param T unknown
  */
 export type IsPrimitive<T extends unknown> = T extends Primitive ? true : false
+
+export type IsString<T extends unknown> = T extends string ? true : false

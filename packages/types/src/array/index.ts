@@ -88,3 +88,26 @@ export type Index<T extends unknown[], V extends unknown, P extends unknown[] = 
     : Equal<T[0], V> extends true
       ? P['length']
       : Index<Tail<T>, V, [...P, TupleFirst<T>]>
+
+
+/**
+ * @description get the array or tuple type [Start, End) section
+ * @param T unknown[]
+ * @param S number?
+ * @param E number?
+ */
+export type Slice<
+  T extends unknown[],
+  S extends number = 0,
+  E extends number = T['length'],
+  P extends unknown[] = [],
+  R extends unknown[] = []
+> = Equal<P['length'], S> extends true
+      ? Equal<P['length'], E> extends true
+        ? R
+        : Slice<Tail<T>, S, E, [...P, TupleFirst<T>], [...R, TupleFirst<T>]>
+      : Equal<R['length'], 0> extends true
+        ? Slice<Tail<T>, S, E, [...P, TupleFirst<T>], R>
+        : Equal<P['length'], E> extends true
+          ? R
+          : Slice<Tail<T>, S, E, [...P, TupleFirst<T>], [...R, TupleFirst<T>]>

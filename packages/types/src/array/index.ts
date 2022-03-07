@@ -1,4 +1,4 @@
-import { Primitive } from '../'
+import { Primitive, Equal } from '../'
 /**
  * @description get subtypes of an array or tuple type
  */
@@ -69,3 +69,22 @@ export type Join<T extends Primitive[], H extends string = '', R extends string 
     : TupleFirst<T> extends Primitive
       ? `${R}${TupleFirst<T>}`
       : `${R}`
+
+/**
+ * @description determines if the type exists in an array or tuple type
+ * @param T unknown[]
+ * @param V unknown
+ */
+export type Includes<T extends unknown[], V extends unknown> = V extends T[number] ? true : false
+
+/**
+ * @description determines if the type exists in the array or tuple type, returns the index of the type if it exists, or -1 if it does not.
+ * @param T unknown[]
+ * @param V unknown
+ */
+export type Index<T extends unknown[], V extends unknown, P extends unknown[] = []> = 
+  Equal<T['length'], 0> extends true
+    ? -1
+    : Equal<T[0], V> extends true
+      ? P['length']
+      : Index<Tail<T>, V, [...P, TupleFirst<T>]>

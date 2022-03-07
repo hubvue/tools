@@ -1,4 +1,4 @@
-import { ArrayFirst, Tail } from '../'
+import { ArrayFirst, Tail, Split } from '../'
 
 type NSymbol = 0 | 1
 
@@ -16,13 +16,6 @@ interface NumberObject<S extends NSymbol, I extends string[], F extends string[]
 
 type IsNegative<T extends number> = `${T}` extends `-${string}` ? true : false
 type IsFractional<T extends number> = `${T}` extends `${string}.${string}` ? true : false
-
-type Split<T extends string, P extends string[] = []> = 
-  T extends ''
-    ? P
-    : T extends `${infer F}${infer R}` 
-      ? Split<R, [...P, F]>
-      : never
 
 type NumberObjectByNF<T extends number> = 
   `${T}` extends `${infer _}${infer I}.${infer F}`
@@ -96,8 +89,8 @@ type SymbolCompareResMap = {
 type SymbolCompare<A extends 0 | 1, B extends 0 | 1> = SymbolCompareResMap[`${A}${B}`]
 
 type CompareHandler<
-  AO extends NumberObject<NSymbol, [], []>,
-  BO extends NumberObject<NSymbol, [], []>,
+  AO extends NumberObject<NSymbol, string[], string[]>,
+  BO extends NumberObject<NSymbol, string[], string[]>,
   I = NumberArrayCompare<AO['integer'], BO['integer'], true>,
   F = NumberArrayCompare<AO['fractional'], BO['fractional'], false>
 > = 
@@ -112,8 +105,8 @@ type CompareHandler<
 export type Compare<
     A extends number, 
     B extends number, 
-    AO extends NumberObject<NSymbol, [], []> = CreateNumberObject<A>, 
-    BO extends NumberObject<NSymbol, [], []> = CreateNumberObject<B>,
+    AO extends NumberObject<NSymbol, string[], string[]> = CreateNumberObject<A>, 
+    BO extends NumberObject<NSymbol, string[], string[]> = CreateNumberObject<B>,
     IN extends boolean = IsNegative<A>,
     S =  SymbolCompare<AO['symbol'], BO['symbol']>,
     C = CompareHandler<AO, BO>

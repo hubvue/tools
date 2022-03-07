@@ -1,5 +1,4 @@
 import { Primitive } from '../'
-import { IsPrimitive } from '../utils'
 /**
  * @description get subtypes of an array or tuple type
  */

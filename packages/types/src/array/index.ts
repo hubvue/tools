@@ -1,3 +1,5 @@
+import { Primitive } from '../'
+import { IsPrimitive } from '../utils'
 /**
  * @description get subtypes of an array or tuple type
  */
@@ -52,3 +54,19 @@ export type Push<T extends unknown[], P extends unknown> = [...T, P]
  * @description add an element to the head of an array or tuple type
  */
 export type Prepend<T extends unknown[], P extends unknown> = [P, ...T]
+
+/**
+ * @description linking Primitive types by a specific hyphen
+ * @param T Primitive[]
+ * @param H? string
+ */
+export type Join<T extends Primitive[], H extends string = '', R extends string = ''> = 
+  T['length'] extends 0
+    ? R
+    : HasTail<T> extends true
+      ? TupleFirst<T> extends Primitive
+        ? Join<Tail<T>, H, `${R}${TupleFirst<T>}${H}`>
+        : Join<Tail<T>, H, `${R}${H}`>
+    : TupleFirst<T> extends Primitive
+      ? `${R}${TupleFirst<T>}`
+      : `${R}`

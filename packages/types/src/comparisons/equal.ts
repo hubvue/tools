@@ -11,8 +11,6 @@ export type Equal<A extends unknown, B extends unknown> =
 /**
  * @description determining that two types are strictly equal
  */
-export type StrictlyEqual<X, Y, A = X, B = never> = (<T>() => T extends X ? 1 : 2) extends <
-  T
->() => T extends Y ? 1 : 2
-  ? A
-  : B
+export type StrictlyEqual<X, Y> = (<T>() => T extends X ? 1 : 2) extends (<T>() => T extends Y ? 1 : 2)
+  ? true
+  : false

@@ -16,6 +16,7 @@ importers:
       eslint: ^8.10.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-prettier: ^4.0.0
+      eslint-plugin-tsdoc: ^0.2.14
       esmo: ^0.14.1
       inquirer: ^8.2.0
       jest: ^27.5.1
@@ -39,6 +40,7 @@ importers:
       eslint: 8.10.0
       eslint-config-prettier: 8.5.0_eslint@8.10.0
       eslint-plugin-prettier: 4.0.0_f3d13a703a9c1079e3d1af6044603beb
+      eslint-plugin-tsdoc: 0.2.14
       esmo: 0.14.1
       inquirer: 8.2.0
       jest: 27.5.1
@@ -1982,6 +1984,13 @@ packages:
       eslint-config-prettier: 8.5.0_eslint@8.10.0
       prettier: 2.5.1
       prettier-linter-helpers: 1.0.0
+    dev: true
+
+  /eslint-plugin-tsdoc/0.2.14:
+    resolution: {integrity: sha512-fJ3fnZRsdIoBZgzkQjv8vAj6NeeOoFkTfgosj6mKsFjX70QV256sA/wq+y/R2+OL4L8E79VVaVWrPeZnKNe8Ng==}
+    dependencies:
+      '@microsoft/tsdoc': 0.13.2
+      '@microsoft/tsdoc-config': 0.15.2
     dev: true
 
   /eslint-scope/5.1.1:

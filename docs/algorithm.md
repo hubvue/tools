@@ -9,4 +9,5 @@
 |  Variable | Description |
 |  --- | --- |
 |  [kMeans](./algorithm.kmeans.md) |  |
+|  [test](./algorithm.test.md) |  |
 

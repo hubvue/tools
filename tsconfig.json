@@ -22,6 +22,13 @@
       "@cckim/*": ["packages/*/src"]
     }
   },
+  "typedocOptions": {
+    "entryPoints": [
+      "packages/algorithm/src/index.ts",
+      "packages/types/src/index.ts"
+    ],
+    "out": "docs",
+  },
   "include": ["packages/*/src/"],
   "exclude": ["packages/*/dist", "packages/*/__test__"]
 }

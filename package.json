@@ -13,7 +13,7 @@
     "format": "eslint --fix . --ext .js,.ts,.cjs,.mjs",
     "ci": "bumpp package.json packages/*/package.json --commit --push --tag",
     "release": "run-s build:all format ci",
-    "docs": "api-documenter markdown --input-folder=temp --output-folder=docs",
+    "deploy:docs": "esmo ./scripts/deploy.ts",
     "build:docs": "run-s build:packages format docs"
   },
   "devDependencies": {
@@ -39,6 +39,8 @@
     "prettier": "^2.5.1",
     "rollup": "^2.69.1",
     "rollup-plugin-typescript2": "^0.31.2",
-    "typescript": "^4.6.2"
+    "typedoc": "^0.22.13",
+    "typescript": "^4.6.2",
+    "zx": "^5.2.0"
   }
 }

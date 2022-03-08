@@ -1,8 +1,9 @@
 import { Pop } from '../'
 /**
- * @description splitting strings into arrays by specific hyphens
- * @param T string
- * @param H string?
+ * @remarks
+ * splitting strings into arrays by specific hyphens
+ * @param T - string
+ * @param H - string?
  */
 export type Split<T extends string, H extends string = ''> = SplitHandler<T, H>
 type SplitHandler<T extends string, H extends string = '', R extends string[] = []> = 

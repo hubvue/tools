@@ -17,7 +17,7 @@ async function deploy() {
   await $`git init`
   await $`git add -A`
   await $`git commit -m'deploy'`
-  await $`git push -f git@github.com:keverjs/kever-docs.git master:gh-pages`
+  await $`git push -f git@github.com:hubvue/tools.git main:gh-pages`
 }
 
 deploy()

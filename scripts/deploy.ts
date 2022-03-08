@@ -12,12 +12,18 @@ function initErrHandler() {
 }
 
 async function deploy() {
-  cd('docs')
-  await $`rm -rf .git`
-  await $`git init`
-  await $`git add -A`
-  await $`git commit -m'deploy'`
-  await $`git push -f git@github.com:hubvue/tools.git main:gh-pages`
+  try {
+    cd('docs')
+    await $`rm -rf .git`
+    await $`git init`
+    await $`git add -A`
+    await $`git commit -m'deploy'`
+    await $`git remote add origin git@github.com:hubvue/tools.git`
+    await $`git push -f git@github.com:hubvue/tools.git main:gh-pages`
+  } catch(err) {
+    console.log('err:', err)
+  }
+  
 }
 
 deploy()

@@ -13,8 +13,9 @@
     "format": "eslint --fix . --ext .js,.ts,.cjs,.mjs",
     "ci": "bumpp package.json packages/*/package.json --commit --push --tag",
     "release": "run-s build:all format ci",
-    "deploy:docs": "esmo ./scripts/deploy.ts",
-    "build:docs": "run-s build:packages format docs"
+    "docs": "typedoc",
+    "deploy": "esmo ./scripts/deploy.ts",
+    "deploy:docs": "run-s docs deploy"
   },
   "devDependencies": {
     "@microsoft/api-documenter": "^7.15.3",

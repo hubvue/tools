@@ -29,4 +29,8 @@ jobs:
         run: pnpm install
       
       - name: Deploy:Docs
-        run: pnpm run deploy:docs
+        run: pnpm run docs
+      - uses: github-actions-x/commit@v2.8
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          commit-message: deploy

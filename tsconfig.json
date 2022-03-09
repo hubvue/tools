@@ -28,6 +28,7 @@
       "packages/types/src/index.ts"
     ],
     "out": "docs",
+    "theme": "category"
   },
   "include": ["packages/*/src/"],
   "exclude": ["packages/*/dist", "packages/*/__test__"]

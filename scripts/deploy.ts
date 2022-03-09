@@ -15,7 +15,7 @@ async function deploy() {
   try {
     await $`git add -A`
     await $`git commit -m'docs: deploy'`
-    await $`git push -f git@github.com:hubvue/tools.git main:gh-pages`
+    await $` git push origin gh-pages`
   } catch(err) {
     console.log('err:', err)
   }

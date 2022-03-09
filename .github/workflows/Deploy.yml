@@ -33,4 +33,5 @@ jobs:
       - uses: github-actions-x/commit@v2.8
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
+          push-branch: gh-pages
           commit-message: deploy

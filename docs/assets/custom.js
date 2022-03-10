@@ -58,34 +58,13 @@ var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 __webpack_require__(571);
-for (const item of document.querySelectorAll('.js-category-title:not([data-id="root"])')) {
-    item.addEventListener('click', () => {
-        const id = item.dataset.id || '';
-        const list = document.querySelector(`.js-category-list[data-id="${id}"]`);
-        const icon = document.querySelector(`.js-category-icon[data-id="${id}"]`);
-        list === null || list === void 0 ? void 0 : list.classList.toggle('_open');
-        icon === null || icon === void 0 ? void 0 : icon.classList.toggle('fa-folder-open');
+const toggler = document.querySelectorAll('.caret');
+for (const element of toggler) {
+    element === null || element === void 0 ? void 0 : element.addEventListener('click', function () {
+        this.parentElement.querySelector('.theme-category-nested').classList.toggle('theme-category-active');
+        this.classList.toggle('caret-down');
     });
 }
-(() => {
-    var _a, _b;
-    const pathname = window.location.pathname.replace('/docs', '');
-    let activeElement = document.querySelector(`.js-category-link[data-id="${pathname}"]`);
-    if (!activeElement) {
-        return;
-    }
-    activeElement.classList.add('_active');
-    // eslint-disable-next-line no-constant-condition
-    while (true) {
-        const parent = activeElement === null || activeElement === void 0 ? void 0 : activeElement.closest('.js-category-list');
-        if (!parent) {
-            break;
-        }
-        parent.classList.add('_open');
-        (_b = (_a = parent.parentNode) === null || _a === void 0 ? void 0 : _a.querySelector('.js-category-icon')) === null || _b === void 0 ? void 0 : _b.classList.add('category__folder--open');
-        activeElement = parent.parentNode;
-    }
-})();
 
 })();
 

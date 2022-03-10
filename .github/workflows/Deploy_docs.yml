@@ -1,5 +1,5 @@
 
-name: Deploy
+name: Deploy Docs
 
 on:
   push:
@@ -28,10 +28,15 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
       
-      - name: Deploy:Docs
+      - name: Build Docs
         run: pnpm run docs
-      - uses: github-actions-x/commit@v2.8
+      - name: Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "docs: deploy" -a
+      - name: Deploy
+        uses: ad-m/github-push-action@master
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          push-branch: gh-pages
-          commit-message: deploy
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          branch: gh-pages

@@ -41,4 +41,7 @@ jobs:
         run: pnpm run docs
       
       - name: Deploy
-        run: git push
+        run: |
+          git add -A
+          git commit -m'docs: deploy'
+          git push

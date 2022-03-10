@@ -5,7 +5,7 @@ type Point = Array<number>
  * @param data original data
  * @param k number of prime points, also number of categories
  * @param threshold comparison threshold for prime iterations
- * @returns the result of the clustering, the mapping of prime points to the category array
+ * @returns the result of the clustering, the mapping of prime points to the category array Hello world test
  */
 export const kMeans = <T extends Point>(data: T[], k = 1, threshold = 0.1) => {
   const centroids = data.slice(0, k)

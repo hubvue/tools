@@ -25,7 +25,8 @@
   "typedocOptions": {
     "entryPoints": [
       "packages/algorithm/src/index.ts",
-      "packages/types/src/index.ts"
+      "packages/types/src/index.ts",
+      "packages/utils/src/index.ts"
     ],
     "out": "docs",
     "theme": "category"

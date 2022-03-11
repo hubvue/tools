@@ -1,3 +1,4 @@
+import { toString } from './converts'
 /**
  * @description Determining whether a variable type is undefined
  * @param value Variables requiring type confirmation
@@ -122,4 +123,4 @@ export const isPromiseLike = <T extends unknown>(value: T): value is T =>
  * @param value Variables requiring type confirmation
  * @returns
  */
-export const isAsyncFn = <T extends unknown>(value: T): value is T => Object.prototype.toString.call(value) === '[object AsyncFunction]'
+export const isAsyncFn = <T extends unknown>(value: T): value is T => toString(value) === '[object AsyncFunction]'

@@ -1,6 +1,6 @@
 {
   "name": "@cckim/utils",
-  "version": "1.0.7-beta.3",
+  "version": "1.0.7-beta.4",
   "description": "@cckim/utils",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",

@@ -12,7 +12,7 @@
     "build:packages": "esmo ./scripts/build.ts --all",
     "format": "eslint --fix . --ext .js,.ts,.cjs,.mjs",
     "ci": "bumpp package.json packages/*/package.json --commit --push --tag",
-    "release": "run-s build:all format ci",
+    "release": "run-s build:packages format ci",
     "docs": "typedoc",
     "deploy": "esmo ./scripts/deploy.ts",
     "deploy:docs": "run-s docs deploy"

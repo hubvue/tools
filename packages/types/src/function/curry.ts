@@ -31,6 +31,7 @@ export type CurryingResult<T extends (...args: any[]) => any> =
     : never
 
 /**
- * @description currying function
+ * @description Currying function
+ * @param fn Function
  */
 export type Currying = <T extends (...args: any[]) => any>(fn: T) => CurryingResult<T>

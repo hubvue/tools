@@ -1,26 +1,27 @@
 import { Primitive, Equal } from '../'
+
 /**
- * @description get subtypes of an array or tuple type
+ * @description Get subtypes of an array or tuple type
  */
 export type Item<T extends unknown[]> = T extends (infer I)[] ? I : never
 
 /**
- * @description get the length of an array or tuple type
+ * @description Get the length of an array or tuple type
  */
 export type Length<T extends unknown[]> = T['length']
 
 /**
- * @description get the type of the first child element of an array type
+ * @description Get the type of the first child element of an array type
  */
 export type ArrayFirst<T extends unknown[]> = ((...t: T) => any) extends ((t: infer F, ...r: T)  => any) ? F : never
 
 /**
- * get the type of the first child element of an tuple type
+ * @description Get the type of the first child element of an tuple type
  */
 export type TupleFirst<T extends unknown[]> = T extends [unknown, ...unknown[]] ? T[0] : never
 
 /**
- * @description array or tuple types delete the first element
+ * @description Array or tuple types delete the first element
  */
 export type Tail<T extends unknown[]> = ((...t: T) => any) extends (
   t: T[0],
@@ -30,32 +31,32 @@ export type Tail<T extends unknown[]> = ((...t: T) => any) extends (
   : never;
     
 /**
- * @description determine if there are elements left at the end of an array or tuple type
+ * @description Determine if there are elements left at the end of an array or tuple type
  */
 export type HasTail<T extends unknown[]> = T extends ([] | [unknown]) ? false : true
 
 /**
- * @description get the type of the last child element of an array or tuple type
+ * @description Get the type of the last child element of an array or tuple type
  */
 export type Last<T extends unknown[]> = HasTail<T> extends true ? Last<Tail<T>> : ArrayFirst<T>
 
 /**
- * @description array or tuple types delete the last child element type
+ * @description Array or tuple types delete the last child element type
  */
 export type Pop<T extends unknown[]> = T extends [...infer R, infer _] ? R : never
 
 /**
- * @description add an element to the end of an array or tuple type
+ * @description Add an element to the end of an array or tuple type
  */
 export type Push<T extends unknown[], P extends unknown> = [...T, P]
 
 /**
- * @description add an element to the head of an array or tuple type
+ * @description Add an element to the head of an array or tuple type
  */
 export type Prepend<T extends unknown[], P extends unknown> = [P, ...T]
 
 /**
- * @description linking Primitive types by a specific hyphen
+ * @description Linking Primitive types by a specific hyphen
  * @param T Primitive[]
  * @param H? string
  */
@@ -73,7 +74,7 @@ type JoinHandler<T extends Primitive[], H extends string = '', R extends string 
 
 
 /**
- * @description determines if the type exists in an array or tuple type
+ * @description Determines if the type exists in an array or tuple type
  * @param T unknown[]
  * @param V unknown
  */
@@ -81,7 +82,7 @@ export type Includes<T extends unknown[], V extends unknown> = V extends T[numbe
 
 
 /**
- * @description determines if the type exists in the array or tuple type, returns the index of the type if it exists, or -1 if it does not.
+ * @description Determines if the type exists in the array or tuple type, returns the index of the type if it exists, or -1 if it does not.
  * @param T unknown[]
  * @param V unknown
  */
@@ -95,7 +96,7 @@ type IndexHandler<T extends unknown[], V extends unknown, P extends unknown[] = 
 
 
 /**
- * @description get the array or tuple type [Start, End) section
+ * @description Get the array or tuple type [Start, End) section
  * @param T unknown[]
  * @param S number?
  * @param E number?
@@ -118,14 +119,14 @@ type SliceHandler<
           : SliceHandler<Tail<T>, S, E, [...P, TupleFirst<T>], [...R, TupleFirst<T>]>
 
 /**
- * @description merging two arrays
+ * @description Merging two arrays
  * @param T unknown[]
  * @param O unknown[]
  */
 export type Concat<T extends unknown[], O extends unknown[]> = [...T, ...O]
 
 /**
- * @description array flattening
+ * @description Array flattening
  * @param T unknown[]
  */
 export type Flat<T extends unknown[]> = FlatHandler<T>
@@ -137,7 +138,7 @@ type FlatHandler<T extends unknown[], R extends unknown[] = []> =
       : FlatHandler<Tail<T>, [...R, TupleFirst<T>]>
 
 /**
- * @description filter out F-compatible types in array types
+ * @description Filter out F-compatible types in array types
  * @param T unknown[]
  * @param F unknown
  */
@@ -150,13 +151,13 @@ export type FilterHandler<T extends unknown[], F extends unknown, R extends unkn
       : FilterHandler<Tail<T>, T, R>
 
 /**
- * @description array type inversion
+ * @description Array type inversion
  * @param T unknown[]
  */
 export type Reverse<T extends unknown[]> = Length<T> extends 0 ? [] : [...Reverse<Tail<T>>, TupleFirst<T>]
 
 /**
- * @description returns true when the types in the array are all F-compatible, otherwise false
+ * @description Returns true when the types in the array are all F-compatible, otherwise false
  * @param T unknown[]
  * @param F unknown
  */
@@ -168,7 +169,7 @@ export type Every<T extends unknown[], F extends unknown> =
       : false
 
 /**
- * @description returns true when any of the types in the array are compatible with the F type, otherwise false
+ * @description Returns true when any of the types in the array are compatible with the F type, otherwise false
  * @param T unknown[]
  * @param F unknown
  */

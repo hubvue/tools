@@ -1,7 +1,6 @@
 import { Pop } from '../'
 /**
- * @remarks
- * splitting strings into arrays by specific hyphens
+ * @description Plitting strings into arrays by specific hyphens
  * @param T - string
  * @param H - string?
  */

@@ -100,9 +100,9 @@ type CompareNumber<
   false
 
 /**
- * @description compare the size of numbers
- * @param A number
- * @param B number
+ * @description Compare the size of numbers
+ * @param A The first number
+ * @param B The second number
  */
 export type Compare<A extends number, B extends number> = CompareHandler<A, B>
 type CompareHandler<

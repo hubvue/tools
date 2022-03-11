@@ -1,7 +1,7 @@
 /**
- * @description camel to any hyphen
- * @param T string to be converted
- * @param H hyphen example: '-' | '_'
+ * @description Camel to any hyphen
+ * @param T String to be converted
+ * @param H Hyphen example: '-' | '_'
  */
 export type CamelToHyphen<T extends string, H extends string, P extends string = ''> = 
   T extends `${infer F}${infer R}` 
@@ -17,21 +17,21 @@ export type CamelToHyphen<T extends string, H extends string, P extends string =
     : never
 
 /**
- * @description camel to any underline
- * @param T string to be converted
+ * @description Camel to any underline
+ * @param T String to be converted
  */
 export type CamelToUnderline<T extends string> = CamelToHyphen<T, '_'>
 
 /**
- * @description camel to any kebab
- * @param T string to be converted
+ * @description Camel to any kebab
+ * @param T String to be converted
  */
 export type CamelToKebab<T extends string> = CamelToHyphen<T, '-'>
 
 /**
- * @description any hyphen to camel
- * @param T string to be converted
- * @param H hyphen example: '-' | '_'
+ * @description Any hyphen to camel
+ * @param T String to be converted
+ * @param H Hyphen example: '-' | '_'
  */
 export type HyphenToCamel<T extends string, H extends string, P extends string = ''> = 
   T extends `${infer F}${infer R}`
@@ -51,19 +51,19 @@ export type HyphenToCamel<T extends string, H extends string, P extends string =
     : never
 
 /**
- * @description kebab to camel
- * @param T string to be converted
+ * @description Kebab to camel
+ * @param T String to be converted
  */
 export type KebabToCamel<T extends string> = HyphenToCamel<T, '-'>
 
 /**
- * @description underline to camel
- * @param T string to be converted
+ * @description Underline to camel
+ * @param T String to be converted
  */
 export type UnderlineToCamel<T extends string> = HyphenToCamel<T, '_'>
 
 /**
- * @description kebab or underline to camel
- * @param T string to be converted
+ * @description Kebab or underline to camel
+ * @param T String to be converted
  */
 export type KebabOrUnderlineToCamel<T extends string> = HyphenToCamel<T, '_' | '-'>

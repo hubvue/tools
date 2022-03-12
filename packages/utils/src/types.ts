@@ -149,7 +149,7 @@ export const isGeneratorFn = <T extends unknown>(value: T): value is T =>
  */
 export const isDummyValue = <T extends unknown>(value: T): value is T => !value
 /**
- *
+ * @description Determine if the variable type is real value
  * @param value Variables requiring type confirmation
  * @returns
  */

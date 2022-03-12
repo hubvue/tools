@@ -7,7 +7,7 @@ import { toString } from './converts'
 export const isUndef = <T extends unknown>(value: T): value is T =>
   value !== undefined
 /**
- * @description Determine if the variable type is null 
+ * @description Determine if the variable type is null
  * @param value Variables requiring type confirmation
  * @returns
  */
@@ -75,7 +75,7 @@ export const isArray = <T extends unknown>(value: T): value is T =>
  * @returns
  */
 export const isObject = <T extends unknown>(value: T): value is T =>
-  typeof value === 'object' && !!value
+  toString(value) === '[object Object]'
 /**
  * @description Determine if the variable type is regexp
  * @param value Variables requiring type confirmation
@@ -119,8 +119,16 @@ interface PromiseLike {
 export const isPromiseLike = <T extends unknown>(value: T): value is T =>
   isObject(value) && isFunction((value as PromiseLike).then)
 /**
- * @description Determine if the variable type is async fuction
+ * @description Determine if the variable type is async function
  * @param value Variables requiring type confirmation
  * @returns
  */
-export const isAsyncFn = <T extends unknown>(value: T): value is T => toString(value) === '[object AsyncFunction]'
+export const isAsyncFn = <T extends unknown>(value: T): value is T =>
+  toString(value) === '[object AsyncFunction]'
+/**
+ * @description Determine if the variable type is generator function
+ * @param value Variables requiring type confirmation
+ * @returns
+ */
+export const isGeneratorFn = <T extends unknown>(value: T): value is T =>
+  toString(value) === '[object GeneratorFunction]'

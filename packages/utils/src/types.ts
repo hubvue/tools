@@ -5,6 +5,13 @@ import { toString } from './converts'
  * @returns
  */
 export const isUndef = <T extends unknown>(value: T): value is T =>
+  value === undefined
+/**
+ * @description Determining whether a variable type is non-undefined
+ * @param value Variables requiring type confirmation
+ * @returns 
+ */
+export const isDef = <T extends unknown>(value: T): value is T =>
   value !== undefined
 /**
  * @description Determine if the variable type is null

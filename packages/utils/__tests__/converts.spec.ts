@@ -17,7 +17,7 @@ describe('converts', () => {
       const tPromise = Promise.resolve()
       const tFunction = () => {}
       const tAsyncFunction = async () => {}
-      const tGeneratorFunction = function*(){}
+      const tGeneratorFunction = function* () {}
       expectHandler(tNumber, 'Number')
       expectHandler(tString, 'String')
       expectHandler(tBoolean, 'Boolean')
@@ -28,7 +28,7 @@ describe('converts', () => {
       expectHandler(tObject, 'Object')
       expectHandler(tPromise, 'Promise')
       expectHandler(tFunction, 'Function')
-      // TODO: AsyncFunction parse to Function
+      // jest cannot resolve async functions
       expectHandler(tAsyncFunction, 'Function')
       expectHandler(tGeneratorFunction, 'GeneratorFunction')
     })

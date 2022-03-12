@@ -24,4 +24,4 @@ export const isBrowser = () => typeof window !== 'undefined'
  * Determining whether the platform environment is a alipay
  * @returns 
  */
-export const isAlipay = () => isSpecificPlatform(/AlipayClient\/([\d.]+)/i)
+export const isAlipay = () => isSpecificPlatform(/AlipayClient/i)

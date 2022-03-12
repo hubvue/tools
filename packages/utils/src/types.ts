@@ -124,7 +124,7 @@ interface PromiseLike {
  * @returns
  */
 export const isPromiseLike = <T extends unknown>(value: T): value is T =>
-  isObject(value) && isFunction((value as PromiseLike).then)
+  isObject(value) && isFunction((value as PromiseLike).then) || isPromise(value)
 /**
  * @description Determine if the variable type is async function
  * @param value Variables requiring type confirmation

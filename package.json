@@ -15,7 +15,8 @@
     "release": "run-s build:packages format ci",
     "docs": "typedoc",
     "deploy": "esmo ./scripts/deploy.ts",
-    "deploy:docs": "run-s docs deploy"
+    "deploy:docs": "run-s docs deploy",
+    "test": "jest"
   },
   "devDependencies": {
     "@microsoft/api-documenter": "^7.15.3",
@@ -40,6 +41,8 @@
     "prettier": "^2.5.1",
     "rollup": "^2.69.1",
     "rollup-plugin-typescript2": "^0.31.2",
+    "ts-jest": "^27.1.3",
+    "ts-node": "^10.7.0",
     "typedoc": "^0.22.13",
     "typedoc-theme-category": "^1.0.7",
     "typescript": "^4.6.2",

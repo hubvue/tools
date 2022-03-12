@@ -17,7 +17,9 @@ import {
   isPromiseLike,
   isFunction,
   isAsyncFn,
-  isGeneratorFn
+  isGeneratorFn,
+  isDummyValue,
+  isRealValue
 } from '../src/types'
 
 describe('types', () => {
@@ -192,6 +194,37 @@ describe('types', () => {
       expect(isGeneratorFn(function*(){})).toBe(true)
     })
     test('The result should be false for non-generator function types', () => {
+      expect(isGeneratorFn(() => {})).toBe(false)
+    })
+  })
+  describe('isDummyValue', () => {
+    test('The result should be true for \'\' value', () => {
+      expect(isDummyValue('')).toBe(true)
+    })
+    test('The result should be true for 0 value', () => {
+      expect(isDummyValue(0)).toBe(true)
+    })
+    test('The result should be true for undefined value', () => {
+      expect(isDummyValue(undefined)).toBe(true)
+    })
+    test('The result should be true for null value', () => {
+      expect(isDummyValue(null)).toBe(true)
+    })
+    test('The result should be true for false value', () => {
+      expect(isDummyValue(false)).toBe(true)
+    })
+    test('The result should be true for NaN value', () => {
+      expect(isDummyValue(NaN)).toBe(true)
+    })
+    test('The result should be false for real value', () => {
+      expect(isDummyValue(1)).toBe(false)
+    })
+  })
+  describe('isRealValue', () => {
+    test('The result should be true for 1 value', () => {
+      expect(isRealValue(1)).toBe(true)
+    })
+    test('The result should be false for dummy value', () => {
       expect(isGeneratorFn(() => {})).toBe(false)
     })
   })

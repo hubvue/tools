@@ -9,7 +9,7 @@ export const isUndef = <T extends unknown>(value: T): value is T =>
 /**
  * @description Determining whether a variable type is non-undefined
  * @param value Variables requiring type confirmation
- * @returns 
+ * @returns
  */
 export const isDef = <T extends unknown>(value: T): value is T =>
   value !== undefined
@@ -124,7 +124,8 @@ interface PromiseLike {
  * @returns
  */
 export const isPromiseLike = <T extends unknown>(value: T): value is T =>
-  isObject(value) && isFunction((value as PromiseLike).then) || isPromise(value)
+  (isObject(value) && isFunction((value as PromiseLike).then)) ||
+  isPromise(value)
 /**
  * @description Determine if the variable type is async function
  * @param value Variables requiring type confirmation
@@ -139,3 +140,18 @@ export const isAsyncFn = <T extends unknown>(value: T): value is T =>
  */
 export const isGeneratorFn = <T extends unknown>(value: T): value is T =>
   toString(value) === '[object GeneratorFunction]'
+
+/**
+ * @description Determine if the variable type is dummy value
+ *               dummy value: isNullable(value) || isNaN(value) || value === 0 || value === '' || value === false
+ * @param value Variables requiring type confirmation
+ * @returns
+ */
+export const isDummyValue = <T extends unknown>(value: T): value is T => !value
+/**
+ *
+ * @param value Variables requiring type confirmation
+ * @returns
+ */
+export const isRealValue = <T extends unknown>(value: T): value is T =>
+  !isDummyValue(value)

@@ -1,7 +1,7 @@
 export default {
-  testEnvironment: 'jest-environment-node',
+  // testEnvironment: 'jest-environment-node',
+  testEnvironment: 'jsdom',
   preset: 'ts-jest',
-
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: 'coverage',
@@ -28,4 +28,5 @@ export default {
     '/node_modules/'
   ],
   watchPathIgnorePatterns: ['/node_modules/', '/dist/', '/.git/', '/docs/', './vscode', '/.github/', '/scripts/', '/temp/'],
+  'setupFiles': ['jest-useragent-mock']
 }

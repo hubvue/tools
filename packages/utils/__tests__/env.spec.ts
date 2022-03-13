@@ -1,5 +1,20 @@
 import { clear, mockUserAgent } from 'jest-useragent-mock'
-import { getUA, isBrowser, isAlipay, isSpecificPlatform } from '../src/env'
+import { browserUA, alipayUA, androidUA, douyinUA, iosUA, ipadUA, qqUA, wxworkUA, macosUA, windowsUA, wechatUA } from '../__mocks__/ua'
+import {
+  getUA,
+  isBrowser,
+  isAlipay,
+  isSpecificPlatform,
+  isWechat,
+  isAndroid,
+  isDouyin,
+  isIos,
+  isPad,
+  isQQ,
+  isWechatWork,
+  isMacos,
+  isWindows
+} from '../src/env'
 
 describe('env', () => {
   const clearUA = () => {
@@ -7,9 +22,6 @@ describe('env', () => {
       clear()
     })
   }
-  const browserUA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1'
-  const alipayUA = 'Mozilla/5.0 (Linux; U; Android 10; zh-CN; H9493 Build/52.1.A.3.49) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/69.0.3497.100 UWS/3.21.0.169 Mobile Safari/537.36 AlipayChannelId/5136 UCBS/3.21.0.169_200731162109 NebulaSDK/1.8.100112 Nebula AlipayDefined(nt:WIFI,ws:411|0|3.5,ac:sp) AliApp(AP/10.2.0.8026) AlipayClient/10.2.0.8026 Language/zh-Hans useStatusBar/true isConcaveScreen/false Region/CN NebulaX/1.0.0 Ariver/1.0.0'
-  
   describe('getUA', () => {
     clearUA()
 
@@ -43,7 +55,7 @@ describe('env', () => {
     test('The result of the isBrowser method should be true in the browser environment', () => {
       expect(isBrowser()).toBe(true)
     })
-    test('The result of the isBrowser method should be true in the browser environment', () => {
+    test('The result of the isBrowser method should be false in the non-browser environment', () => {
       windowSpy.mockImplementation(() => undefined)
       expect(isBrowser()).toBe(false)
     })
@@ -68,10 +80,119 @@ describe('env', () => {
       const alipayReg = /AlipayClient/i
       expect(isSpecificPlatform(alipayReg)).toBe(true)
     })
-    test('Should result in true on unspecified platforms', () => {
+    test('Should result in false on unspecified platforms', () => {
       mockUserAgent(browserUA)
       const alipayReg = /AlipayClient/i
       expect(isSpecificPlatform(alipayReg)).toBe(false)
+    })
+  })
+
+  describe('isWechat', () => {
+    clearUA()
+    test('Should result in true on the Wechat platform', () => {
+      mockUserAgent(wechatUA)
+      expect(isWechat()).toBe(true)
+    })
+    test('Should result in false on non-Wechat platforms', () => {
+      mockUserAgent(browserUA)
+      expect(isWechat()).toBe(false)
+    })
+  })
+
+  describe('isAndroid', () => {
+    clearUA()
+    test('Should result in true on the Android platform', () => {
+      mockUserAgent(androidUA)
+      expect(isAndroid()).toBe(true)
+    })
+    test('Should result in false on non-Android platforms', () => {
+      mockUserAgent(browserUA)
+      expect(isAndroid()).toBe(false)
+    })
+  })
+
+  describe('isDouyin', () => {
+    clearUA()
+    test('Should result in true on the Douyin platform', () => {
+      mockUserAgent(douyinUA)
+      expect(isDouyin()).toBe(true)
+    })
+    test('Should result in false on non-Douyin platforms', () => {
+      mockUserAgent(browserUA)
+      expect(isDouyin()).toBe(false)
+    })
+  })
+
+  describe('isIos', () => {
+    clearUA()
+    test('Should result in true on the IOS platform', () => {
+      mockUserAgent(iosUA)
+      expect(isIos()).toBe(true)
+    })
+    test('Should result in false on non-IOS platforms', () => {
+      mockUserAgent(androidUA)
+      expect(isIos()).toBe(false)
+    })
+  })
+
+  describe('isPad', () => {
+    clearUA()
+    test('Should result in true on the iPad platform', () => {
+      mockUserAgent(ipadUA)
+      expect(isPad()).toBe(true)
+    })
+    test('Should result in false on non-iPad platforms', () => {
+      mockUserAgent(browserUA)
+      expect(isPad()).toBe(false)
+    })
+  })
+
+  describe('isQQ', () => {
+    clearUA()
+    test('Should result in true on the QQ platform', () => {
+      mockUserAgent(qqUA)
+      expect(isQQ()).toBe(true)
+    })
+    test('Should result in false on non-QQ platforms', () => {
+      mockUserAgent(browserUA)
+      expect(isQQ()).toBe(false)
+    })
+  })
+
+  describe('isWechatWork', () => {
+    clearUA()
+    test('Should result in true on the Wechat Work platform', () => {
+      mockUserAgent(wxworkUA)
+      expect(isWechatWork()).toBe(true)
+    })
+    test('Should result in false on non-Wechat Work platforms', () => {
+      mockUserAgent(browserUA)
+      expect(isWechatWork()).toBe(false)
+    })
+  })
+
+  describe('isMacos', () => {
+    clearUA()
+    test('Should result in true on the Macos platform', () => {
+      mockUserAgent(macosUA)
+      expect(isMacos()).toBe(true)
+    })
+    test('Should result in false on non-Macos platforms', () => {
+      
+      mockUserAgent(windowsUA)
+      expect(isMacos()).toBe(false)
+    })
+  })
+
+  describe('isWindows', () => {
+    clearUA()
+    test('Should result in true on the Windows platform', () => {
+      mockUserAgent(windowsUA)
+      expect(isWindows()).toBe(true)
+    })
+    test('Should result in false on non-Windows platforms', () => {
+      mockUserAgent(browserUA)
+      expect(isWindows()).toBe(false)
     })
   })
 })

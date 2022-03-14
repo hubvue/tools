@@ -1,4 +1,4 @@
-import { toString } from './converts'
+import { toString } from './object'
 /**
  * @description Determining whether a variable type is undefined
  * @param value Variables requiring type confirmation

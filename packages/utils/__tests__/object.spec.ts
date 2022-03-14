@@ -1,6 +1,7 @@
-import { toString } from '../src/converts'
+import { toString, has } from '../src/object'
+import { clear, mockReflect } from '../__mocks__/reflect'
 
-describe('converts', () => {
+describe('object', () => {
   describe('toString', () => {
     const expectHandler = (value: unknown, target: string) => {
       expect(toString(value)).toBe(`[object ${target}]`)
@@ -31,6 +32,23 @@ describe('converts', () => {
       // jest cannot resolve async functions
       expectHandler(tAsyncFunction, 'Function')
       expectHandler(tGeneratorFunction, 'GeneratorFunction')
+    })
+  })
+
+  describe('has', () => {
+    const target = {
+      'key': 123
+    }
+    test('The key should be present in the target is property', () => {
+      expect(has(target, 'key')).toBe(true)
+    })
+    test('The key1 should not be present in the properties of target', () => {
+      expect(has(target, 'key1')).toBe(false)
+    })
+    test('Reflect should be used normally when the environment does not support it', () => {
+      mockReflect()
+      expect(has(target, 'key')).toBe(true)
+      clear()
     })
   })
 })

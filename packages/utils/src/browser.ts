@@ -17,3 +17,9 @@ export const isDarkMode = () => {
  * @returns 
  */
 export const genHexColor = () => `#${Math.floor(Math.random() * 0xffffff).toString(16)}`
+/**
+ * @description Determine if a string is a hexadecimal colour value
+ * @param color color value
+ * @returns 
+ */
+export const isHexColor = (color: string) => /^#([0-9A-F]{3}|[0-9A-F]{6}|[0-9A-F]{8})$/i.test(color)

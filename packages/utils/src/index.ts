@@ -19,3 +19,8 @@ export * from './array'
  * @description Browser Related Functions
  */
 export * from './browser'
+
+/**
+ * @description Function functions
+ */
+export * from './function'

@@ -21,6 +21,7 @@ const OPTIONS_DEFAULT: Options = {
  * @param options 
  * @returns 
  * @example
+ *   ```ts
  *   const box = document.getElementById('div')
  *   const test = () => console.log(123)
  *   
@@ -28,6 +29,7 @@ const OPTIONS_DEFAULT: Options = {
  *   box.onclick = testDebounce.debounced
  *   // cancel
  *   testDebounce.cancel()
+ *   ```
  *   
  */
 export const createDebounce = <T extends Fn>(fn: T, options?: Partial<Options>): Debouncer<T> => {

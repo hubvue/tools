@@ -113,12 +113,6 @@ export const isError = <T extends Error>(value: unknown): value is T =>
 export const isPromise = <T extends Promise<unknown>>(value: unknown): value is T =>
   value instanceof Promise
 
-interface PromiseLike<T extends unknown> {
-  then: (
-    resolve: (value: T) => any,
-    reject?: (reason: any) => any
-  ) => PromiseLike<T>
-}
 /**
  * @description Determine if the variable type is promiseLike
  * @param value Variables requiring type confirmation

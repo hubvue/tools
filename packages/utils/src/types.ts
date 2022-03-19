@@ -12,7 +12,7 @@ export const isUndef = <T extends undefined>(value: unknown): value is T =>
  * @param value Variables requiring type confirmation
  * @returns
  */
-export const isDef = <T extends unknown>(value: T): value is T =>
+export const isDef = <T extends unknown>(value: T): value is Exclude<T, undefined> =>
   value !== undefined
 /**
  * @description Determine if the variable type is null
@@ -26,7 +26,7 @@ export const isNull = <T extends null>(value: unknown): value is T =>
  * @param value Variables requiring type confirmation
  * @returns
  */
-export const isNullable = <T extends unknown>(value: T): value is T =>
+export const isNullable = <T extends unknown>(value: T): value is NonNullable<T> =>
   isUndef(value) || isNull(value)
 /**
  * @description Determine if the variable type is string

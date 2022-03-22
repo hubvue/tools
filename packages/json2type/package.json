@@ -1,6 +1,6 @@
 {
   "name": "@cckim/json2type",
-  "version": "1.0.7-beta.11",
+  "version": "1.0.7-beta.12",
   "description": "@cckim/json2type",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",

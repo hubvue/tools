@@ -1,6 +1,6 @@
 {
   "name": "@cckim/go-wasmer",
-  "version": "1.0.7-beta.12",
+  "version": "1.0.7",
   "description": "Execution of go projects by wasm",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",

@@ -1,0 +1,33 @@
+{
+  "name": "@cckim/go-wasmer",
+  "version": "1.0.7-beta.10",
+  "description": "Execution of go projects by wasm",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.esm.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [
+    "go",
+    "wasm",
+    "execution",
+    "typescript",
+    "javascript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hubvue/tools.git",
+    "directory": "packages/go-wasmer"
+  },
+  "bugs": {
+    "url": "https://github.com/hubvue/tools/issues"
+  },
+  "homepage": "https://github.com/hubvue/tools/tree/main/packages/go-wasmer#readme",
+  "author": "hubvue",
+  "license": "MIT"
+}

@@ -20,7 +20,7 @@
     "declaration": true,
     "paths": {
       "@cckim/*": ["packages/*/src"]
-    }
+    },
   },
   "typedocOptions": {
     "entryPoints": [
@@ -31,6 +31,9 @@
     "out": "docs",
     "theme": "category"
   },
+  "files": [
+    "packages/go-wasmer/global.d.ts"
+  ],
   "include": ["packages/*/src/"],
   "exclude": ["packages/*/dist", "packages/*/__test__"]
 }

@@ -1,0 +1,39 @@
+{
+  "name": "@cckim/json2type",
+  "version": "1.0.7-beta.11",
+  "description": "@cckim/json2type",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.esm.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "bin": {
+    "json2type": "./bin/index.js"
+  },
+  "keywords": [
+    "json2type",
+    "typescript",
+    "golang",
+    "json",
+    "generator"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hubvue/tools.git",
+    "directory": "packages/json2type"
+  },
+  "bugs": {
+    "url": "https://github.com/hubvue/tools/issues"
+  },
+  "homepage": "https://github.com/hubvue/tools/tree/main/packages/json2type#readme",
+  "author": "hubvue",
+  "license": "MIT",
+  "dependencies": {
+    "@cckim/go-wasmer": "^1.0.7-beta.11"
+  }
+}

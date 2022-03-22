@@ -67,7 +67,19 @@ importers:
   packages/algorithm:
     specifiers: {}
 
+  packages/go-wasmer:
+    specifiers: {}
+
+  packages/json2type:
+    specifiers:
+      '@cckim/go-wasmer': ^1.0.7-beta.11
+    dependencies:
+      '@cckim/go-wasmer': link:../go-wasmer
+
   packages/types:
+    specifiers: {}
+
+  packages/utils:
     specifiers: {}
 
 packages:

@@ -99,11 +99,8 @@ const pascalCase = (str) => {
 
 const formats = ['esm', 'cjs']
 const packageOtherConfig = {
-  vue2: {
-    external: ['@exposure-lib/core'],
-  },
-  vue: {
-    external: ['@exposure-lib/core'],
+  json2type: {
+    external: ['@cckim/go-wasmer'],
   },
 }
 const generateBuildConfigs = (packagesName) => {

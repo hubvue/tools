@@ -117,6 +117,7 @@ const generateBuildConfigs = (packagesName) => {
           output: {
             name: pascalCase(packageName),
             file: resolve(`packages/${packageName}/dist/index.${format}.js`),
+            inlineDynamicImports: true,
             format,
           },
           plugins: [
@@ -159,6 +160,7 @@ const buildEntry = async (packageConfig) => {
     }
     console.log(chalk.green(`${packageConfig.packageName} build successful! `))
   } catch (err) {
+    console.log('err', err)
     console.log(chalk.red(`${packageConfig.packageName} build fail!`))
   }
 }

@@ -1,6 +1,15 @@
 import { proxyLog } from './defineLog'
 
-export const runWasmByNode = async (wasmFilePath: string, args: unknown[] = []) => {
+/**
+ * @description Loading go applications via WebAssembly in a nodejs environment
+ * @param wasmFilePath
+ * @param args
+ * @returns
+ */
+export const runWasmByNode = async (
+  wasmFilePath: string,
+  args: unknown[] = []
+) => {
   const initEnv = await import('../internal/wasm_node_init')
   initEnv.default()
   const initGoWasm = await import('../internal/wasm_exec')
@@ -13,7 +22,7 @@ export const runWasmByNode = async (wasmFilePath: string, args: unknown[] = []) 
 
   const wasmFile = fs.readFileSync(wasmFilePath)
   return WebAssembly.instantiate(wasmFile, go.importObject)
-    .then( async (result) => {
+    .then(async (result) => {
       process.on('exit', (code) => {
         if (code === 0 && !go.exited) {
           go._pendingEvent = { id: 0 }
@@ -34,19 +43,31 @@ export const runWasmByNode = async (wasmFilePath: string, args: unknown[] = []) 
 }
 
 interface BrowserWasmCache {
-  module: WebAssembly.Module | null,
+  module: WebAssembly.Module | null
   instance: WebAssembly.Instance | null
+  wasmFile: string
 }
 
 const BrowserWasmCache: BrowserWasmCache = {
   module: null,
-  instance: null
+  instance: null,
+  wasmFile: '',
 }
 
-export const runWasmByBrowser = async (wasmFilePath: string, args: unknown[] = []) => {
+/**
+ * @description Loading go applications via WebAssembly in a nodejs environment
+ * @param wasmFilePath
+ * @param args
+ * @returns
+ */
+export const runWasmByBrowser = async (
+  wasmFilePath: string,
+  args: unknown[] = []
+) => {
   const initGoWasm = await import('../internal/wasm_exec')
   initGoWasm.default()
-  if (!WebAssembly.instantiateStreaming) { // polyfill
+  if (!WebAssembly.instantiateStreaming) {
+    // polyfill
     WebAssembly.instantiateStreaming = async (resp, importObject) => {
       const source = await (await resp).arrayBuffer()
       return await WebAssembly.instantiate(source, importObject)
@@ -56,14 +77,22 @@ export const runWasmByBrowser = async (wasmFilePath: string, args: unknown[] = [
   const go = new Go()
   go.argv = [wasmFilePath, ...args]
   const fetchWasm = () => {
-    return WebAssembly.instantiateStreaming(fetch(wasmFilePath), go.importObject).then((result) => {
+    return WebAssembly.instantiateStreaming(
+      fetch(wasmFilePath),
+      go.importObject
+    ).then((result) => {
       BrowserWasmCache.module = result.module
       BrowserWasmCache.instance = result.instance
+      BrowserWasmCache.wasmFile = wasmFilePath
     })
   }
 
-  if (!BrowserWasmCache.instance || !BrowserWasmCache.module) {
-    await fetchWasm().catch(err => console.error(`[Go Wasm]: ${err}`))
+  if (
+    !BrowserWasmCache.instance ||
+    !BrowserWasmCache.module ||
+    BrowserWasmCache.wasmFile !== wasmFilePath
+  ) {
+    await fetchWasm().catch((err) => console.error(`[Go Wasm]: ${err}`))
   }
   let res: unknown
   const clear = proxyLog((arg) => {
@@ -73,10 +102,12 @@ export const runWasmByBrowser = async (wasmFilePath: string, args: unknown[] = [
     console.warn('[Go Wasm]: WebAssembly file failed to load')
   } else {
     await go.run(BrowserWasmCache.instance)
-    BrowserWasmCache.instance = await WebAssembly.instantiate(BrowserWasmCache.module, go.importObject) // reset instance
+    BrowserWasmCache.instance = await WebAssembly.instantiate(
+      BrowserWasmCache.module,
+      go.importObject
+    ) // reset instance
   }
   clear()
-  
+
   return res
 }
-

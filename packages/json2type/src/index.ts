@@ -10,7 +10,7 @@ interface Options {
 
 export const json2type = async (options: Options) => {
   const args = normalizeOptions(options)
-  return runWasm(resolve('wasm/json2type.wasm'), args)
+  return runWasm(resolve(__dirname, '../wasm/json2type.wasm'), args)
 }
 
 const normalizeOptions = (options: Options) => {

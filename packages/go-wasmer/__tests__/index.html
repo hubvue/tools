@@ -11,8 +11,16 @@
 </body>
 <script type="module">
   import { runWasm } from '../dist/index.esm.js';
-  runWasm('./add.wasm', [1]).then(result => {
+  console.time('wasm1');
+  runWasm('./add.wasm', [1, 2]).then(result => {
+    console.timeEnd('wasm1');
     console.log('result', result)
+    console.time('wasm2');
+    runWasm('./add.wasm', [3, 4]).then(result => {
+      console.timeEnd('wasm2');
+      console.log('result', result)
+    })
   })
+  
 </script>
 </html>

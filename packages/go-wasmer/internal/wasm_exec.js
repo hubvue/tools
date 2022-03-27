@@ -528,7 +528,7 @@ export default () => {
 			if (this.exited) {
 				this._resolveExitPromise()
 			}
-			await this._exitPromise
+			// await this._exitPromise
 		}
 
 		_resume() {

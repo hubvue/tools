@@ -24,3 +24,31 @@ export const decimalToN = (value: number, target: number, handler: ConvertFn = c
  * @param value 
  */
 export const decimalToBinary = (value: number) => decimalToN(value, 2)
+
+
+export const decimalToOctal = (value: number) => decimalToN(value, 8)
+
+export const decimalToHexadecimal = (value: number) => decimalToN(value, 16, (value) => {
+  if (value >= 10) {
+    return String.fromCharCode(value + 55)
+  }
+  return value
+})
+
+export const decimalToThirtyhex = (value: number) => decimalToN(value, 36, (value) => {
+  if (value >= 10) {
+    return String.fromCharCode(value + 55)
+  }
+  return value
+})
+
+export const decimalToSixtybinary = (value: number) => decimalToN(value, 62, (value) => {
+  switch (true) {
+    case value >= 10 && value < 36:
+      return String.fromCharCode(value + 55)
+    case value >= 36:
+      return String.fromCharCode(value + 61)
+    default:
+      return value
+  }
+})

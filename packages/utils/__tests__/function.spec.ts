@@ -1,5 +1,5 @@
 
-import { createDebounce }  from '../src/function'
+import { createDebounce }  from '../src/function/debounce'
 
 const sleep = (time: number) => new Promise((resolve) => setTimeout(resolve, time))
 describe('function', () => {

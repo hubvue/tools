@@ -1,4 +1,4 @@
-import { runWasm } from '@cckim/go-wasmer'
+import { runWasm } from 'go-wasmer'
 import { resolve } from 'path'
 
 interface Options {

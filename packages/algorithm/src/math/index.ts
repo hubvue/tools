@@ -1,1 +1,1 @@
-export * from './binary'
+export * from './binary-convert'

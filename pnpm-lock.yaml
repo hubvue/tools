@@ -67,14 +67,11 @@ importers:
   packages/algorithm:
     specifiers: {}
 
-  packages/go-wasmer:
-    specifiers: {}
-
   packages/json2type:
     specifiers:
-      '@cckim/go-wasmer': ^1.0.7-beta.11
+      go-wasmer: ^1.0.2
     dependencies:
-      '@cckim/go-wasmer': link:../go-wasmer
+      go-wasmer: 1.0.2
 
   packages/types:
     specifiers: {}
@@ -413,6 +410,10 @@ packages:
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
+
+  /@cckim/utils/1.0.9:
+    resolution: {integrity: sha512-gq+Doo85xmrbBcIs1nn1dMB7aHeaA1jmvb3CRagKedt58RRIYBGMLLHerliDU8Aw15Eo5NFh5Pm1XIKIDkPmqQ==}
+    dev: false
 
   /@cspotcode/source-map-consumer/0.8.0:
     resolution: {integrity: sha512-41qniHzTU8yAGbCp04ohlmSrZf8bkf/iJsl3V0dRGsQN/5GFfx+LbCSsCpp2gqrqjTVg/K6O8ycoV35JIwAzAg==}
@@ -2556,6 +2557,12 @@ packages:
       merge2: 1.4.1
       slash: 4.0.0
     dev: true
+
+  /go-wasmer/1.0.2:
+    resolution: {integrity: sha512-mzKw3CeQJLQCJ0JI77/DNRUKAOUO8/FBnuStYJl3cCI0rKDB9oxArMxYSNlDc8dL+CC0S3y5opjaxk9UUKCuKg==}
+    dependencies:
+      '@cckim/utils': 1.0.9
+    dev: false
 
   /graceful-fs/4.2.9:
     resolution: {integrity: sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==}

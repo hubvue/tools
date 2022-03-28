@@ -3,9 +3,10 @@ import {
   decimalToBinary,
   decimalToOctal,
   decimalToHexadecimal,
-  decimalToThirtyhex,
-  decimalToSixtybinary,
-} from '../../src/math/binary'
+  decimalToThirtysix,
+  decimalToSixtytwo,
+  ntoDecimal,
+} from '../../src/math/binary-convert'
 
 describe('binary', () => {
   describe('decimalToN', () => {
@@ -50,13 +51,19 @@ describe('binary', () => {
 
   describe('decimalToThirtyhex', () => {
     test('Converting decimal to thirtyhex should meet expectations', () => {
-      expect(decimalToThirtyhex(10086)).toBe('7S6')
+      expect(decimalToThirtysix(10086)).toBe('7S6')
     })
   })
 
   describe('decimalToSixtybinary', () => {
     test('Converting decimal to sixtybinary should meet expectations', () => {
-      expect(decimalToSixtybinary(1648372782646)).toBe('tHR2ec')
+      expect(decimalToSixtytwo(1648372782646)).toBe('tHR2ec')
+    })
+  })
+
+  describe('ntoDecimal', () => {
+    test('ntoDecimal', () => {
+      expect(ntoDecimal('10011101100110', 2)).toBe(10086)
     })
   })
 })

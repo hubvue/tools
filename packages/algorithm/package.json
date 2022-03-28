@@ -2,14 +2,32 @@
   "name": "@cckim/algorithm",
   "version": "1.0.10",
   "description": "@cckim/algorithm",
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.esm.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.cjs.js",
-      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
+    },
+    "./*": "./*",
+    "./math": {
+      "require": "./dist/math/index.js",
+      "import": "./dist/math/index.mjs",
+      "types": "./dist/math/index.d.ts"
+    },
+    "./cluster": {
+      "require": "./dist/cluster/index.js",
+      "import": "./dist/cluster/index.mjs",
+      "types": "./dist/cluster/index.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*"
+      ]
     }
   },
   "keywords": [

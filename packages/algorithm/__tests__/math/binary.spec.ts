@@ -5,6 +5,7 @@ import {
   decimalToHexadecimal,
   decimalToThirtysix,
   decimalToSixtytwo,
+  ntoDecimal,
 } from '../../src/math/binary-convert'
 
 describe('binary', () => {
@@ -57,6 +58,12 @@ describe('binary', () => {
   describe('decimalToSixtybinary', () => {
     test('Converting decimal to sixtybinary should meet expectations', () => {
       expect(decimalToSixtytwo(1648372782646)).toBe('tHR2ec')
+    })
+  })
+
+  describe('ntoDecimal', () => {
+    test('ntoDecimal', () => {
+      expect(ntoDecimal('10011101100110', 2)).toBe(10086)
     })
   })
 })

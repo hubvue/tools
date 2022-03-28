@@ -1,12 +1,12 @@
 type ConvertFn = (value: number) => number | string
-const convertHandler = (value: number) => value
+const convert = (value: number) => value
 /**
  * @description Converting decimal numbers to N Binary
  * @param value Origin value
  * @param target Target binary
  * @param handler Handling procedures
  */
-export const decimalToN = (value: number, target: number, handler: ConvertFn = convertHandler) => {
+export const decimalToN = (value: number, target: number, handler: ConvertFn = convert) => {
   if (Number.isNaN(value)) {
     return value
   }
@@ -70,3 +70,24 @@ export const decimalToSixtytwo = (value: number) => decimalToN(value, 62, (value
       return value
   }
 })
+
+
+const nonBiraryNumber = (value: string | number) => {
+  return false
+}
+type ReverseConvertFn = (value: string) => number
+const reverseConvert = (value: string) => Number(value)
+export const ntoDecimal = (value: string, origin: number, handler: ReverseConvertFn = reverseConvert) => {
+  if (value === '') {
+    return 0
+  }
+  if (nonBiraryNumber(value)) {
+    return 0
+  }
+  const singleBits = value.split('')
+  return singleBits.reduceRight((decimal, bit, index) => {
+    const power = singleBits.length - index - 1
+    return decimal + (handler(bit) * Math.pow(origin, power))
+  }, 0)
+
+}

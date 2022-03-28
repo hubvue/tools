@@ -1,5 +1,5 @@
 
-import { isBrowser } from './env'
+import { isBrowser } from '../env'
 
 /**
  * @description Determine if the user is in dark mode

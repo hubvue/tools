@@ -1,5 +1,5 @@
 import { Key } from '@cckim/types'
-import { toString } from './object'
+import { toString } from '../object'
 /**
  * @description Determining whether a variable type is undefined
  * @param value Variables requiring type confirmation

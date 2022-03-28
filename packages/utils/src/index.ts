@@ -14,7 +14,7 @@ export * from './object'
 /**
  * @description Array functions
  */
-export * from './array'
+export * from './array/'
 /**
  * @description Browser Related Functions
  */

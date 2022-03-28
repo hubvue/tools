@@ -88,7 +88,6 @@ const generateBuildConfigs = (packagesName: string[]): Options[] => {
 const buildEntry = async (packageConfig: Options) => {
   try {
     await tsupBuild(packageConfig)
-    console.log(chalk.green(`${packageConfig.name} build successful! `))
   } catch (err) {
     console.log('err', err)
     console.log(chalk.red(`${packageConfig.name} build fail!`))

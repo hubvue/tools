@@ -1,6 +1,6 @@
 {
   "name": "@cckim/algorithm",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "@cckim/algorithm",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",

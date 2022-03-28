@@ -34,6 +34,6 @@
   "author": "hubvue",
   "license": "MIT",
   "dependencies": {
-    "@cckim/go-wasmer": "^1.0.7-beta.11"
+    "go-wasmer": "^1.0.2"
   }
 }

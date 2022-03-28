@@ -93,5 +93,4 @@ export const ntoDecimal = (value: string, origin: number, handler: ReverseConver
     const power = singleBits.length - index - 1
     return decimal + (handler(bit) * Math.pow(origin, power))
   }, 0)
-
 }

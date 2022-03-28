@@ -1,5 +1,6 @@
 .npmignore
 __tests__/
+__mocks__/
 src/
 node_modules/
 api-extractor.json

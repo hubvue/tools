@@ -72,9 +72,7 @@ export const decimalToSixtytwo = (value: number) => decimalToN(value, 62, (value
 })
 
 
-const nonBiraryNumber = (value: string | number) => {
-  return false
-}
+const nonBiraryNumber = (value: string) => /[^a-z|^0-9|^A-Z]/.test(value)
 type ReverseConvertFn = (value: string) => number
 const reverseConvert = (value: string) => Number(value)
 export const ntoDecimal = (value: string, origin: number, handler: ReverseConvertFn = reverseConvert) => {

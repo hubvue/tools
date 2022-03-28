@@ -71,10 +71,16 @@ export const decimalToSixtytwo = (value: number) => decimalToN(value, 62, (value
   }
 })
 
-
 const nonBiraryNumber = (value: string) => /[^a-z|^0-9|^A-Z]/.test(value)
 type ReverseConvertFn = (value: string) => number
 const reverseConvert = (value: string) => Number(value)
+/**
+ * @description Converting arbitrary decimal numbers to decimal
+ * @param value Origin value
+ * @param origin Origin binary
+ * @param handler Handling procedures
+ * @returns 
+ */
 export const ntoDecimal = (value: string, origin: number, handler: ReverseConvertFn = reverseConvert) => {
   if (value === '') {
     return 0

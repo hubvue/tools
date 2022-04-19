@@ -179,3 +179,14 @@ export type Some<T extends unknown[], F extends unknown> =
     : TupleFirst<T> extends F
       ? true
       : Some<Tail<T>, F>
+
+/**
+ * @description Converts numbers into an array of equal length and fills it with the appropriate type
+ * @param T number
+ * @param F unknown
+ */
+export type NumToArray<T extends number, F extends unknown = ''> = NumToArrayHandler<T, F>
+export type NumToArrayHandler<T extends number, F extends unknown, R extends F[] = []> = 
+  R['length'] extends T
+    ? R
+    : NumToArrayHandler<T, F, [...R, F]>

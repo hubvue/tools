@@ -18,7 +18,7 @@ export type ArrayFirst<T extends unknown[]> = ((...t: T) => any) extends ((t: in
 /**
  * @description Get the type of the first child element of an tuple type
  */
-export type TupleFirst<T extends unknown[]> = T extends [unknown, ...unknown[]] ? T[0] : never
+export type TupleFirst<T extends any[]> = T extends [any, ...any[]] ? T[0] : never
 
 /**
  * @description Array or tuple types delete the first element

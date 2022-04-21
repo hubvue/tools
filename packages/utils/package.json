@@ -11,7 +11,6 @@
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
     },
-    "./*": "./*",
     "./types": {
       "require": "./dist/types/index.js",
       "import": "./dist/types/index.mjs",
@@ -43,12 +42,8 @@
       "types": "./dist/array/index.d.ts"
     }
   },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/index.d.ts"
-      ]
-    }
+  "peerDependencies": {
+    "typescript": ">=4.7.0-beta"
   },
   "keywords": [
     "types"

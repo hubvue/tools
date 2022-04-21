@@ -36,14 +36,15 @@
       "require": "./dist/array/index.js",
       "import": "./dist/array/index.mjs",
       "types": "./dist/array/index.d.ts"
+    },
+    "./object": {
+      "require": "./dist/object/index.js",
+      "import": "./dist/object/index.mjs",
+      "types": "./dist/object/index.d.ts"
     }
   },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/index.d.ts"
-      ]
-    }
+  "peerDependencies": {
+    "typescript": ">=4.7.0-beta"
   },
   "keywords": [
     "types"

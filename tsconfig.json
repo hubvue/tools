@@ -5,7 +5,7 @@
     "sourceMap": false,
     "target": "ES2016",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "allowJs": false,
     "strict": true,
     "noUnusedLocals": true,

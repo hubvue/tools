@@ -23,12 +23,8 @@
       "types": "./dist/cluster/index.d.ts"
     }
   },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/index.d.ts"
-      ]
-    }
+  "peerDependencies": {
+    "typescript": ">=4.7.0-beta"
   },
   "keywords": [
     "algorithm"

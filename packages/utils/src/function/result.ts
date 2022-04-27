@@ -33,3 +33,21 @@ export const Ok = <T>(data: T): Result<T, never> => {
 export const Err = <E>(error?: E): Result<never, E> => {
   return { ok: false, error }
 }
+
+/**
+ * @description Ok type guarding function
+ * @param value 
+ * @returns 
+ */
+export const isOk = <T extends unknown>(value: any): value is Ok<T> => {
+  return value.ok
+}
+
+/**
+ * @description Err type guarding function
+ * @param value 
+ * @returns 
+ */
+export const isErr = <T extends unknown>(value: any): value is Err<T> => {
+  return !value.ok
+}

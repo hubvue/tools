@@ -19,3 +19,13 @@ export type Intersection<T extends object, U extends object> = Pick<T, Extract<k
  */
 export type Assign<T extends object, U extends object> = AssignHandler<T, U>
 type AssignHandler<T extends object, U extends object, I = Diff<T, U> & Intersection<U, T> & Diff<U, T>> = Pick<I, keyof I>
+
+/**
+ * @description Converting an object type to a union type with a single attribute
+ * @param T object
+ */
+export type SingleProperty<T extends object> = {
+  [K in keyof T]: {
+    [P in K]: T[K]
+  }
+}[keyof T]

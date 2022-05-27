@@ -13,8 +13,8 @@ interface Constructor<T extends unknown> {
  * @param depth Depth of clone
  * @returns 
  */
-export const cloneOfDepth = <T extends unknown>(target: T, depth?: number) => cloneOfDepthHandler(target, depth)
-const cloneOfDepthHandler = <T extends unknown>(
+export const cloneOfDepth = <T extends unknown>(target: T, depth?: number) => _cloneOfDepth(target, depth)
+const _cloneOfDepth = <T extends unknown>(
   target: T,
   depth?: number,
   map: MapType = new WeakMap(),
@@ -45,7 +45,7 @@ const cloneOfDepthHandler = <T extends unknown>(
 
   for (let key in target) {
     if (target.hasOwnProperty(key)) {
-      t[key] = cloneOfDepthHandler(target[key], depth, map, currentDepth + 1)
+      t[key] = _cloneOfDepth(target[key], depth, map, currentDepth + 1)
     }
   }
   return t

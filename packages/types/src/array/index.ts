@@ -61,14 +61,14 @@ export type Prepend<T extends unknown[], P extends unknown> = [P, ...T]
  * @param T Primitive[]
  * @param H? string
  */
-export type Join<T extends Primitive[], H extends string = ''> = JoinHandler<T, H>
-type JoinHandler<T extends Primitive[], H extends string = '', R extends string = ''> = 
+export type Join<T extends Primitive[], H extends string = ''> = _Join<T, H>
+type _Join<T extends Primitive[], H extends string = '', R extends string = ''> = 
   T['length'] extends 0
     ? R
     : HasTail<T> extends true
       ? TupleFirst<T> extends Primitive
-        ? JoinHandler<Tail<T>, H, `${R}${TupleFirst<T>}${H}`>
-        : JoinHandler<Tail<T>, H, `${R}${H}`>
+        ? _Join<Tail<T>, H, `${R}${TupleFirst<T>}${H}`>
+        : _Join<Tail<T>, H, `${R}${H}`>
     : TupleFirst<T> extends Primitive
       ? `${R}${TupleFirst<T>}`
       : `${R}`
@@ -87,13 +87,13 @@ export type Includes<T extends unknown[], V extends unknown> = V extends T[numbe
  * @param T unknown[]
  * @param V unknown
  */
-export type Index<T extends unknown[], V extends unknown> = IndexHandler<T, V>
-type IndexHandler<T extends unknown[], V extends unknown, P extends unknown[] = []> = 
+export type Index<T extends unknown[], V extends unknown> = _Index<T, V>
+type _Index<T extends unknown[], V extends unknown, P extends unknown[] = []> = 
   Equal<T['length'], 0> extends true
     ? -1
     : Equal<T[0], V> extends true
       ? P['length']
-      : IndexHandler<Tail<T>, V, [...P, TupleFirst<T>]>
+      : _Index<Tail<T>, V, [...P, TupleFirst<T>]>
 
 
 /**
@@ -102,8 +102,8 @@ type IndexHandler<T extends unknown[], V extends unknown, P extends unknown[] = 
  * @param S number?
  * @param E number?
  */
-export type Slice<T extends unknown[], S extends number = 0, E extends number = T['length']> = SliceHandler<T, S, E>
-type SliceHandler<
+export type Slice<T extends unknown[], S extends number = 0, E extends number = T['length']> = _Slice<T, S, E>
+type _Slice<
   T extends unknown[],
   S extends number,
   E extends number,
@@ -112,12 +112,12 @@ type SliceHandler<
 > = Equal<P['length'], S> extends true
       ? Equal<P['length'], E> extends true
         ? R
-        : SliceHandler<Tail<T>, S, E, [...P, TupleFirst<T>], [...R, TupleFirst<T>]>
+        : _Slice<Tail<T>, S, E, [...P, TupleFirst<T>], [...R, TupleFirst<T>]>
       : Equal<R['length'], 0> extends true
-        ? SliceHandler<Tail<T>, S, E, [...P, TupleFirst<T>], R>
+        ? _Slice<Tail<T>, S, E, [...P, TupleFirst<T>], R>
         : Equal<P['length'], E> extends true
           ? R
-          : SliceHandler<Tail<T>, S, E, [...P, TupleFirst<T>], [...R, TupleFirst<T>]>
+          : _Slice<Tail<T>, S, E, [...P, TupleFirst<T>], [...R, TupleFirst<T>]>
 
 /**
  * @description Merging two arrays
@@ -130,26 +130,26 @@ export type Concat<T extends unknown[], O extends unknown[]> = [...T, ...O]
  * @description Array flattening
  * @param T unknown[]
  */
-export type Flat<T extends unknown[]> = FlatHandler<T>
-type FlatHandler<T extends unknown[], R extends unknown[] = []> = 
+export type Flat<T extends unknown[]> = _Flat<T>
+type _Flat<T extends unknown[], R extends unknown[] = []> = 
   Length<T> extends 0
     ? R
     : TupleFirst<T> extends unknown[]
-      ? FlatHandler<Tail<T>, [...R, ...FlatHandler<TupleFirst<T>>]>
-      : FlatHandler<Tail<T>, [...R, TupleFirst<T>]>
+      ? _Flat<Tail<T>, [...R, ..._Flat<TupleFirst<T>>]>
+      : _Flat<Tail<T>, [...R, TupleFirst<T>]>
 
 /**
  * @description Filter out F-compatible types in array types
  * @param T unknown[]
  * @param F unknown
  */
-export type Filter<T extends unknown[], F extends unknown> = FilterHandler<T, F>
-export type FilterHandler<T extends unknown[], F extends unknown, R extends unknown[] = []> = 
+export type Filter<T extends unknown[], F extends unknown> = _Filter<T, F>
+export type _Filter<T extends unknown[], F extends unknown, R extends unknown[] = []> = 
   Length<T> extends 0
     ? R
     : TupleFirst<T> extends F
-      ? FilterHandler<Tail<T>, F, [...R, TupleFirst<T>]>
-      : FilterHandler<Tail<T>, T, R>
+      ? _Filter<Tail<T>, F, [...R, TupleFirst<T>]>
+      : _Filter<Tail<T>, T, R>
 
 /**
  * @description Array type inversion
@@ -186,8 +186,8 @@ export type Some<T extends unknown[], F extends unknown> =
  * @param T number
  * @param F unknown
  */
-export type NumToArray<T extends number, F extends unknown = ''> = NumToArrayHandler<T, F>
-type NumToArrayHandler<T extends number, F extends unknown, R extends F[] = []> = 
+export type NumToArray<T extends number, F extends unknown = ''> = _NumToArray<T, F>
+type _NumToArray<T extends number, F extends unknown, R extends F[] = []> = 
   R['length'] extends T
     ? R
-    : NumToArrayHandler<T, F, [...R, F]>
+    : _NumToArray<T, F, [...R, F]>

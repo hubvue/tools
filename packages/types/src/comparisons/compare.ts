@@ -52,7 +52,7 @@ type NumberCompare<A extends string, B extends string, T extends string[] = [], 
       ? Res.Victory
       : NumberCompare<A, B, [...T, '_']>
 
-type NumberArrayCompareHandler<
+type _NumberArrayCompare<
   A extends string[],
   B extends string[],
   FA extends string = ArrayFirst<A>,
@@ -65,7 +65,7 @@ type NumberArrayCompareHandler<
       ? Res.Tie
       : Res.Failure
     : NumberCompare<FA, FB> extends Res.Tie
-      ? NumberArrayCompareHandler<RA, RB>
+      ? _NumberArrayCompare<RA, RB>
       : NumberCompare<ArrayFirst<A>, ArrayFirst<B>>
 
 type NumberArrayCompare<
@@ -75,9 +75,9 @@ type NumberArrayCompare<
   LR = NumberCompare<`${A['length']}`, `${B['length']}`>
 > = 
   CK extends true
-    ? NumberArrayCompareHandler<A, B>
+    ? _NumberArrayCompare<A, B>
     : LR extends Res.Tie
-      ? NumberArrayCompareHandler<A, B>
+      ? _NumberArrayCompare<A, B>
       : LR
 
 
@@ -105,8 +105,8 @@ type CompareNumber<
  * @param A The first number
  * @param B The second number
  */
-export type Compare<A extends number, B extends number> = CompareHandler<A, B>
-type CompareHandler<
+export type Compare<A extends number, B extends number> = _Compare<A, B>
+type _Compare<
     A extends number, 
     B extends number, 
     AO extends NumberObject<NSymbol, string[], string[]> = CreateNumberObject<A>, 

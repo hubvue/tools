@@ -1,4 +1,5 @@
-import { Pop, Last, UnionToIntersection } from '../'
+import { Pop, Last } from '../array'
+import { UnionToIntersection } from '../utils'
 
 type Accumulate<T extends unknown[], I, O extends unknown[] = T> = 
   `${T['length']}` extends I 

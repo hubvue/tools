@@ -1,4 +1,4 @@
-import { Pop } from '../'
+import { Pop } from '../array'
 /**
  * @description Plitting strings into arrays by specific hyphens
  * @param T - string

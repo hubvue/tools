@@ -1,26 +1,26 @@
 /**
  * @description Determining the platform environment
  */
-export * from './env'
+export * as Env from './env'
 /**
  * @description Determining the type of variable
  */
-export * from './types'
+export * as Types from './types'
 
 /**
  * @description Object functions
  */
-export * from './object'
+export * as Object from './object'
 /**
  * @description Array functions
  */
-export * from './array/'
+export * as Array from './array/'
 /**
  * @description Browser Related Functions
  */
-export * from './browser'
+export * as Browser from './browser'
 
 /**
  * @description Function functions
  */
-export * from './function'
+export * as Function from './function'

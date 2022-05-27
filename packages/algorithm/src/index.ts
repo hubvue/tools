@@ -1,2 +1,2 @@
-export * from './cluster'
-export * from './math'
+export * as Cluster from './cluster'
+export * as Math from './math'

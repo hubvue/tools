@@ -1,4 +1,5 @@
-import { Primitive, Equal } from '../'
+import { Primitive } from '../utils'
+import { Equal } from '../comparisons'
 
 /**
  * @description Get subtypes of an array or tuple type

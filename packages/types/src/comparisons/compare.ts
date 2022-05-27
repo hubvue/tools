@@ -1,4 +1,5 @@
-import { ArrayFirst, Tail, Split } from '../'
+import { ArrayFirst, Tail } from '../array'
+import { Split } from '../string'
 
 type NSymbol = 0 | 1
 

@@ -1,5 +1,5 @@
 import { Pop, Last } from '../array'
-import { UnionToIntersection } from '../utils'
+import { IntersectOf } from '../union'
 
 type Accumulate<T extends unknown[], I, O extends unknown[] = T> = 
   `${T['length']}` extends I 
@@ -28,7 +28,7 @@ export type CurryingResult<T extends (...args: any[]) => any> =
       ? V
         : R['length'] extends 1
           ?  T
-          : UnionToIntersection<OverloadFn<R, V>[number]>
+          : IntersectOf<OverloadFn<R, V>[number]>
     : never
 
 /**

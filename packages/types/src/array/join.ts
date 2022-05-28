@@ -1,4 +1,4 @@
-import { Primitive } from '../utils'
+import { Primitive } from '../value'
 import { HasTail } from './hasTail'
 import { Tail } from './tail'
 import { TupleFirst } from './tupleFirst'

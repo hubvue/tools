@@ -6,11 +6,6 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    },
     "./types": {
       "require": "./dist/types/index.js",
       "import": "./dist/types/index.mjs",
@@ -40,6 +35,11 @@
       "require": "./dist/array/index.js",
       "import": "./dist/array/index.mjs",
       "types": "./dist/array/index.d.ts"
+    },
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
     }
   },
   "peerDependencies": {

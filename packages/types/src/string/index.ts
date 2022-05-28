@@ -1,6 +1,6 @@
 export * from './camelToHyphen'
 export * from './hyphenToCamel'
-export * from './queryParams'
+// export * from './queryParams'
 
 // methods
 export * from './split'

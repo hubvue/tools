@@ -1,4 +1,4 @@
-import { Ref } from './Ref'
+import { Ref } from './ref'
 
 /**
  * @description Unpack ref type

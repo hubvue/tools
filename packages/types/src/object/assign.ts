@@ -1,5 +1,5 @@
 import { Diff } from './diff'
-import { Intersection } from './Intersection'
+import { Intersection } from './intersection'
 
 /**
  * @description Object.assign method simulation, merging two objects

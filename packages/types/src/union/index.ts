@@ -1,3 +1,6 @@
 export * from './intersectOf'
 export * from './last'
 export * from './pop'
+export * from './isUnion'
+export * from './tupleOf'
+export * from './merge'

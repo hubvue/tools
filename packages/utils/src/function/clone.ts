@@ -1,7 +1,7 @@
-import { Util } from '@cckim/types'
+import { Value } from '@cckim/types'
 import { isDate, isObject, isRegExp, isDef } from '../types'
 
-type MapType = WeakMap<Record<Util.Key, unknown>, Record<Util.Key, unknown>>
+type MapType = WeakMap<Record<Value.Key, unknown>, Record<Value.Key, unknown>>
 
 interface Constructor<T extends unknown> {
   new (...args: unknown[]): T
@@ -39,7 +39,7 @@ const _cloneOfDepth = <T extends unknown>(
     return map.get(target)
   }
 
-  let t = new (target.constructor as Constructor<Record<Util.Key, unknown>>)()
+  let t = new (target.constructor as Constructor<Record<Value.Key, unknown>>)()
 
   map.set(target, t)
 

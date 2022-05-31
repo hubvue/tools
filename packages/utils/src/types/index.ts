@@ -1,4 +1,4 @@
-import { Util } from '@cckim/types'
+import { Value } from '@cckim/types'
 import { toString } from '../object'
 /**
  * @description Determining whether a variable type is undefined
@@ -82,7 +82,7 @@ export const isArray = <T extends Array<unknown>>(value: unknown): value is T =>
  * @param value Variables requiring type confirmation
  * @returns
  */
-export const isObject = <T extends Record<Util.Key, unknown>>(value: unknown): value is T =>
+export const isObject = <T extends Record<Value.Key, unknown>>(value: unknown): value is T =>
   toString(value) === '[object Object]'
 /**
  * @description Determine if the variable type is regexp

@@ -1,5 +1,5 @@
 export * as Array from './array'
-export * as Comparisions from './comparisons'
+export * as Comparision from './comparisons'
 export * as Function from './function'
 export * as String from './string'
 export * as Value from './value'

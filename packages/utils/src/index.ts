@@ -5,7 +5,7 @@ export * as Env from './env'
 /**
  * @description Determining the type of variable
  */
-export * as Types from './types'
+export * as Types from './is'
 
 /**
  * @description Object functions

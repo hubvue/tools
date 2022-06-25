@@ -1,5 +1,5 @@
 import { Value } from '@cckim/types'
-import { isDate, isObject, isRegExp, isDef } from '../types'
+import { isDate, isObject, isRegExp, isDef } from '../is/index'
 
 type MapType = WeakMap<Record<Value.Key, unknown>, Record<Value.Key, unknown>>
 

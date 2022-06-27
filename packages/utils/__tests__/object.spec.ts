@@ -1,4 +1,4 @@
-import { toString, has } from '../src/object'
+import { toString, has, keys } from '../src/object'
 import { clear, mockReflect } from '../__mocks__/reflect'
 
 describe('object', () => {
@@ -49,6 +49,18 @@ describe('object', () => {
       mockReflect()
       expect(has(target, 'key')).toBe(true)
       clear()
+    })
+  })
+
+  describe('keys', () => {
+    const target = {
+      'key': 123
+    }
+    test('The array length after keys processing should be consistent with the number of object attributes', () => {
+      expect(keys(target).length).toBe(1)
+    })
+    test('The array processed by keys should be a collection of object attributes', () => {
+      expect(keys(target)).toStrictEqual(['key'])
     })
   })
 })

@@ -32,5 +32,10 @@
     "theme": "category"
   },
   "include": ["packages/*/src/"],
-  "exclude": ["packages/*/dist", "packages/*/__test__"]
+  "exclude": ["packages/*/dist", "packages/*/__test__"],
+  "ts-node": {
+    "moduleTypes": {
+      "jest.config.ts": "cjs"
+    }
+  }
 }

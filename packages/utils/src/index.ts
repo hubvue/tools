@@ -24,3 +24,8 @@ export * as Browser from './browser'
  * @description Function functions
  */
 export * as Function from './function'
+
+/**
+ * @description String function
+ */
+export * as String from './string'

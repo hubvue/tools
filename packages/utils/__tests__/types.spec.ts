@@ -20,7 +20,7 @@ import {
   isGeneratorFn,
   isDummyValue,
   isRealValue
-} from '../src/types'
+} from '../src/is'
 
 describe('types', () => {
   describe('isDef', () => {

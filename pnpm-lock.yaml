@@ -61,9 +61,9 @@ importers:
 
   packages/json2type:
     specifiers:
-      go-wasmer: ^1.1.3
+      go-wasmer: ^1.1.4
     dependencies:
-      go-wasmer: 1.1.3
+      go-wasmer: 1.1.4_typescript@4.7.2
 
   packages/types:
     specifiers: {}
@@ -403,8 +403,12 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cckim/utils/1.0.9:
-    resolution: {integrity: sha512-gq+Doo85xmrbBcIs1nn1dMB7aHeaA1jmvb3CRagKedt58RRIYBGMLLHerliDU8Aw15Eo5NFh5Pm1XIKIDkPmqQ==}
+  /@cckim/utils/1.2.3_typescript@4.7.2:
+    resolution: {integrity: sha512-RAeiuPJQzTRvWlmUdhjaLge59FDOrIgqtcv4vkK6zj6XOd/UZD9sKHhlPh97xdD7OuA9hg+3TqN9R/lHw+TBMw==}
+    peerDependencies:
+      typescript: '>=4.7.0'
+    dependencies:
+      typescript: 4.7.2
     dev: false
 
   /@cspotcode/source-map-consumer/0.8.0:
@@ -2404,10 +2408,12 @@ packages:
       slash: 3.0.0
     dev: true
 
-  /go-wasmer/1.1.3:
-    resolution: {integrity: sha512-KHZWj+QMBwMKkM25aDHfj8AG9OOWsrK7Mwr4W1ozsBXWv5EjXYVsmEYcYnlZ+7J4lvJ8PXL3R0PyzCny0KmthA==}
+  /go-wasmer/1.1.4_typescript@4.7.2:
+    resolution: {integrity: sha512-DRMyhEObhfEOHd07gepeHskX4ijE5Ux+b6I4rGKQkbaEpxO68AEofIdwlBVo89lDXnmnmTvSfRyGoPLOlc9JWA==}
     dependencies:
-      '@cckim/utils': 1.0.9
+      '@cckim/utils': 1.2.3_typescript@4.7.2
+    transitivePeerDependencies:
+      - typescript
     dev: false
 
   /graceful-fs/4.2.9:

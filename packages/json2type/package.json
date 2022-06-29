@@ -1,6 +1,6 @@
 {
   "name": "@cckim/json2type",
-  "version": "1.2.3",
+  "version": "1.2.4-beta.1",
   "description": "@cckim/json2type",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -34,6 +34,6 @@
   "author": "hubvue",
   "license": "MIT",
   "dependencies": {
-    "go-wasmer": "^1.0.2"
+    "go-wasmer": "^1.1.3"
   }
 }

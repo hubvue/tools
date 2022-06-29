@@ -15,6 +15,8 @@ const run = async () => {
   console.log(result)
 }
 
-run()
+run().catch(err => {
+  console.error(err)
+})
 
 

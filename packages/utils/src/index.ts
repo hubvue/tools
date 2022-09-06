@@ -14,7 +14,7 @@ export * as Object from './object'
 /**
  * @description Array functions
  */
-export * as Array from './array/'
+export * as Array from './array'
 /**
  * @description Browser Related Functions
  */
@@ -26,6 +26,11 @@ export * as Browser from './browser'
 export * as Function from './function'
 
 /**
- * @description String function
+ * @description String functions
  */
 export * as String from './string'
+
+/**
+ * @description Number functions
+ */
+export * as Number from './number'

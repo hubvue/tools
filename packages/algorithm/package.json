@@ -1,6 +1,6 @@
 {
   "name": "@cckim/algorithm",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "@cckim/algorithm",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

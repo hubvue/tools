@@ -1,4 +1,4 @@
-import { Value } from '@cckim/types'
+import { TValue } from '@cckim/types'
 /**
  * @description Converting variables to characters via the toString method
  * @param value Variables to be processed
@@ -10,7 +10,7 @@ export const toString = (value: unknown) => Object.prototype.toString.call(value
  * @param target 
  * @returns 
  */
-export const has = (target: Record<Value.Key, unknown>, key: Value.Key) => {
+export const has = (target: Record<TValue.Key, unknown>, key: TValue.Key) => {
   if (typeof Reflect !== 'undefined') {
     return Reflect.has(target, key)
   }

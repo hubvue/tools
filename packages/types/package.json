@@ -1,6 +1,6 @@
 {
   "name": "@cckim/types",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "@cckim/types",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

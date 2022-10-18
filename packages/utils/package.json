@@ -1,6 +1,6 @@
 {
   "name": "@cckim/utils",
-  "version": "1.2.4",
+  "version": "1.2.7",
   "description": "@cckim/utils",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

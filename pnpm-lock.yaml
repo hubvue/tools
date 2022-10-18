@@ -15,7 +15,7 @@ importers:
       eslint-config-prettier: ^8.5.0
       eslint-plugin-prettier: ^4.0.0
       eslint-plugin-tsdoc: ^0.2.14
-      esmo: ^0.14.1
+      esmo: 0.16.3
       inquirer: ^8.2.0
       jest: ^27.5.1
       jest-useragent-mock: ^0.1.1
@@ -41,7 +41,7 @@ importers:
       eslint-config-prettier: 8.5.0_eslint@8.25.0
       eslint-plugin-prettier: 4.2.1_hvbqyfstm4urdpm6ffpwfka4e4
       eslint-plugin-tsdoc: 0.2.17
-      esmo: 0.14.1
+      esmo: 0.16.3
       inquirer: 8.2.4
       jest: 27.5.1_ts-node@10.9.1
       jest-useragent-mock: 0.1.1
@@ -414,6 +414,27 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
+    dev: true
+
+  /@esbuild-kit/cjs-loader/2.4.0:
+    resolution: {integrity: sha512-DBBCiHPgL2B/elUpvCDhNHXnlZQ9sfO2uyt1OJyAXKT41beQEFY4OxZ6gwS+ZesRCbZ6JV8M7GEyOPkjv8kdIw==}
+    dependencies:
+      '@esbuild-kit/core-utils': 3.0.0
+      get-tsconfig: 4.2.0
+    dev: true
+
+  /@esbuild-kit/core-utils/3.0.0:
+    resolution: {integrity: sha512-TXmwH9EFS3DC2sI2YJWJBgHGhlteK0Xyu1VabwetMULfm3oYhbrsWV5yaSr2NTWZIgDGVLHbRf0inxbjXqAcmQ==}
+    dependencies:
+      esbuild: 0.15.11
+      source-map-support: 0.5.21
+    dev: true
+
+  /@esbuild-kit/esm-loader/2.5.0:
+    resolution: {integrity: sha512-ySs0qOsiwj+hsgZM9/MniGdvfa9/WzqfFuIia8/5gSUPeIQIX2/tG91QakxPFOR35VFiwTB7wCiHtiS6dc6SkA==}
+    dependencies:
+      '@esbuild-kit/core-utils': 3.0.0
+      get-tsconfig: 4.2.0
     dev: true
 
   /@esbuild/android-arm/0.15.11:
@@ -1329,12 +1350,6 @@ packages:
       ieee754: 1.2.1
     dev: true
 
-  /builtins/4.1.0:
-    resolution: {integrity: sha512-1bPRZQtmKaO6h7qV1YHXNtr6nCK28k0Zo95KM4dXfILcZZwoHJBN1m3lfLv9LPkcOZlrSr+J1bzMaZFO98Yq0w==}
-    dependencies:
-      semver: 7.3.8
-    dev: true
-
   /bumpp/7.2.0:
     resolution: {integrity: sha512-vQxdpWe7VzdpV4dVjpWoGwTDrKZn4eqKVmjIYUlDgrmjesXAqJnWhu+VFxazoE4pLs1q5NwDhgzK1xAFL0K+Jg==}
     engines: {node: '>=10'}
@@ -1913,12 +1928,6 @@ packages:
     dev: true
     optional: true
 
-  /esbuild-node-loader/0.6.5:
-    resolution: {integrity: sha512-uPP+dllWm38cFvDysdocutN3lfe5pTIbddAHp1ENyLzpHYqE2r+3Wo+pfg9X3p8DFWwzIisft5YkeBIthIcixw==}
-    dependencies:
-      esbuild: 0.15.11
-    dev: true
-
   /esbuild-openbsd-64/0.15.11:
     resolution: {integrity: sha512-0bBo9SQR4t66Wd91LGMAqmWorzO0TTzVjYiifwoFtel8luFeXuPThQnEm5ztN4g0fnvcp7AnUPPzS/Depf17wQ==}
     engines: {node: '>=12'}
@@ -1927,14 +1936,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /esbuild-register/3.3.3_esbuild@0.15.11:
-    resolution: {integrity: sha512-eFHOkutgIMJY5gc8LUp/7c+LLlDqzNi9T6AwCZ2WKKl3HmT+5ef3ZRyPPxDOynInML0fgaC50yszPKfPnjC0NQ==}
-    peerDependencies:
-      esbuild: '>=0.12 <1'
-    dependencies:
-      esbuild: 0.15.11
-    dev: true
 
   /esbuild-sunos-64/0.15.11:
     resolution: {integrity: sha512-EuBdTGlsMTjEl1sQnBX2jfygy7iR6CKfvOzi+gEOfhDqbHXsmY1dcpbVtcwHAg9/2yUZSfMJHMAgf1z8M4yyyw==}
@@ -2151,15 +2152,11 @@ packages:
       - supports-color
     dev: true
 
-  /esmo/0.14.1:
-    resolution: {integrity: sha512-zx48iHEWEzhouF6wXSRbO8+KuDH5QWy30qVk0EE/olYxIA4ZPySfUkqxh7tDUBizUROzdyjWmCdSDJa+3pb+9Q==}
+  /esmo/0.16.3:
+    resolution: {integrity: sha512-u+4CR+q54/br7AACbv3iETBbe4Bm3n4T9qJ+Q1NZgnPexQKTKYS18uDFJTaH9laEc5sQvX9T7dwQWbgYADmkuQ==}
     hasBin: true
     dependencies:
-      cross-spawn: 7.0.3
-      esbuild: 0.15.11
-      esbuild-node-loader: 0.6.5
-      esbuild-register: 3.3.3_esbuild@0.15.11
-      import-meta-resolve: 1.1.1
+      tsx: 3.10.3
     dev: true
 
   /espree/9.4.0:
@@ -2424,6 +2421,10 @@ packages:
       get-intrinsic: 1.1.3
     dev: true
 
+  /get-tsconfig/4.2.0:
+    resolution: {integrity: sha512-X8u8fREiYOE6S8hLbq99PeykTDoLVnxvF4DjWKJmz9xy2nNRdUcV8ZN9tniJFeKyTU3qnC9lL8n4Chd6LmVKHg==}
+    dev: true
+
   /glob-parent/5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
@@ -2622,12 +2623,6 @@ packages:
     dependencies:
       pkg-dir: 4.2.0
       resolve-cwd: 3.0.0
-    dev: true
-
-  /import-meta-resolve/1.1.1:
-    resolution: {integrity: sha512-JiTuIvVyPaUg11eTrNDx5bgQ/yMKMZffc7YSjvQeSMXy58DO2SQ8BtAf3xteZvmzvjYh14wnqNjL8XVeDy2o9A==}
-    dependencies:
-      builtins: 4.1.0
     dev: true
 
   /imurmurhash/0.1.4:
@@ -4760,6 +4755,17 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 4.8.4
+    dev: true
+
+  /tsx/3.10.3:
+    resolution: {integrity: sha512-yni2/n09VMOihGw6fCTKAowvQZ7BOWRVlpW9RnJPDakoHqHIlpxWieUUr5fnQa3zWoR1Jb902Un4Bv/JsKQ4RQ==}
+    hasBin: true
+    dependencies:
+      '@esbuild-kit/cjs-loader': 2.4.0
+      '@esbuild-kit/core-utils': 3.0.0
+      '@esbuild-kit/esm-loader': 2.5.0
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: true
 
   /type-check/0.3.2:

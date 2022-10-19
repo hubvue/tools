@@ -34,3 +34,8 @@ export * as UString from './string'
  * @description Number functions
  */
 export * as UNumber from './number'
+
+/**
+ * @description Promise functions
+ */
+export * as UPromise from './promise'

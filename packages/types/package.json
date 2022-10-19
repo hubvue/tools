@@ -10,36 +10,6 @@
       "require": "./dist/index.js",
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
-    },
-    "./utils": {
-      "require": "./dist/utils/index.js",
-      "import": "./dist/utils/index.mjs",
-      "types": "./dist/utils/index.d.ts"
-    },
-    "./string": {
-      "require": "./dist/string/index.js",
-      "import": "./dist/string/index.mjs",
-      "types": "./dist/string/index.d.ts"
-    },
-    "./function": {
-      "require": "./dist/function/index.js",
-      "import": "./dist/function/index.mjs",
-      "types": "./dist/function/index.d.ts"
-    },
-    "./comparisons": {
-      "require": "./dist/comparisons/index.js",
-      "import": "./dist/comparisons/index.mjs",
-      "types": "./dist/comparisons/index.d.ts"
-    },
-    "./array": {
-      "require": "./dist/array/index.js",
-      "import": "./dist/array/index.mjs",
-      "types": "./dist/array/index.d.ts"
-    },
-    "./object": {
-      "require": "./dist/object/index.js",
-      "import": "./dist/object/index.mjs",
-      "types": "./dist/object/index.d.ts"
     }
   },
   "peerDependencies": {

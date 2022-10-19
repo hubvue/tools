@@ -10,16 +10,6 @@
       "require": "./dist/index.js",
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
-    },
-    "./math": {
-      "require": "./dist/math/index.js",
-      "import": "./dist/math/index.mjs",
-      "types": "./dist/math/index.d.ts"
-    },
-    "./cluster": {
-      "require": "./dist/cluster/index.js",
-      "import": "./dist/cluster/index.mjs",
-      "types": "./dist/cluster/index.d.ts"
     }
   },
   "peerDependencies": {

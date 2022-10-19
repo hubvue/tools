@@ -71,7 +71,7 @@ const generateBuildConfigs = (packagesName: string[]): Options[] => {
     return {
       name,
       target: 'node14',
-      entry: [`packages/${name}/src/**/index.ts`],
+      entry: [`packages/${name}/src/index.ts`],
       outDir: `packages/${name}/dist`,
       format: ['cjs', 'esm'],
       dts: true,
@@ -79,6 +79,7 @@ const generateBuildConfigs = (packagesName: string[]): Options[] => {
       splitting: false,
       clean: true,
       shims: false,
+      minify: true,
       tsconfig: resolve('tsconfig.json'),
       ...packageOtherConfig[name]
     }

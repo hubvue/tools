@@ -1,4 +1,4 @@
-import { isPending, isReject, isResolve } from '../src/promise'
+import { isPending, isReject, isResolve, sleep } from '../src/promise'
 
 describe('promise', () => {
   describe('state', () => {
@@ -37,6 +37,18 @@ describe('promise', () => {
         rejectFn && rejectFn()
         expect(await isReject(p)).toBe(true)
       })
+    })
+  })
+  describe('time', () => {
+    test('sleep', () => {
+      const p = new Promise((resolve) => {
+        sleep(1000).then(() => {
+          resolve('')
+        })
+      })
+      setTimeout(async () => {
+        expect(await isResolve(p)).toBe(true)
+      }, 1000)
     })
   })
 })

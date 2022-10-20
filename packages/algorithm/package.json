@@ -1,25 +1,15 @@
 {
   "name": "@cckim/algorithm",
-  "version": "1.2.8",
+  "version": "1.2.11",
   "description": "@cckim/algorithm",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
-    },
-    "./math": {
-      "require": "./dist/math/index.js",
-      "import": "./dist/math/index.mjs",
-      "types": "./dist/math/index.d.ts"
-    },
-    "./cluster": {
-      "require": "./dist/cluster/index.js",
-      "import": "./dist/cluster/index.mjs",
-      "types": "./dist/cluster/index.d.ts"
     }
   },
   "peerDependencies": {

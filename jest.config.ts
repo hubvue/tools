@@ -1,6 +1,6 @@
 export default {
   // testEnvironment: 'jest-environment-node',
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-environment-jsdom',
   module: 'esnext',
   preset: 'ts-jest',
   clearMocks: true,

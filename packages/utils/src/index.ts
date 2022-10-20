@@ -5,16 +5,16 @@ export * as Env from './env'
 /**
  * @description Determining the type of variable
  */
-export * as Types from './is'
+export * as Is from './is'
 
 /**
  * @description Object functions
  */
-export * as Object from './object'
+export * as UObject from './object'
 /**
  * @description Array functions
  */
-export * as Array from './array'
+export * as UArray from './array'
 /**
  * @description Browser Related Functions
  */
@@ -23,14 +23,19 @@ export * as Browser from './browser'
 /**
  * @description Function functions
  */
-export * as Function from './function'
+export * as UFunction from './function'
 
 /**
  * @description String functions
  */
-export * as String from './string'
+export * as UString from './string'
 
 /**
  * @description Number functions
  */
-export * as Number from './number'
+export * as UNumber from './number'
+
+/**
+ * @description Promise functions
+ */
+export * as UPromise from './promise'

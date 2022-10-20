@@ -26,6 +26,11 @@ interface CancelContext<T> {
   promise: Promise<T | undefined>
   cancel: () => void
 }
+/**
+ * @description cancel promise
+ * @param p Promise
+ * @returns CancelContext
+ */
 export const withCancel = <T extends unknown>(p: Promise<T>): CancelContext<T> => {
   type Resolve = (value?: T) => void
   let resolveFn: Resolve| null = null

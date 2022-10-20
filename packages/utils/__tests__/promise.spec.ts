@@ -1,4 +1,4 @@
-import { isPending, isReject, isResolve, sleep } from '../src/promise'
+import { isPending, isReject, isResolve, sleep, withDeadline } from '../src/promise'
 
 describe('promise', () => {
   describe('state', () => {
@@ -49,6 +49,27 @@ describe('promise', () => {
       setTimeout(async () => {
         expect(await isResolve(p)).toBe(true)
       }, 1000)
+    })
+
+    test('withDeadline', () => {
+      const p1 = withDeadline(Promise.resolve('p'), 1000)
+      p1.then(v => {
+        expect(v).toBe('p')
+      })
+
+      const p2 = new Promise<string>(async (resolve) => {
+        await sleep(1000)
+        resolve('p2')
+      })
+      withDeadline(p2, 500, '500').then(v => {
+        expect(v).toBe('500')
+      })
+      withDeadline(p2, 500).then(v => {
+        expect(v).toBe(undefined)
+      })
+      withDeadline(p2, 1500).then(v => {
+        expect(v).toBe('p2')
+      })
     })
   })
 })

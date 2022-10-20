@@ -1,4 +1,4 @@
-import { isPending, isReject, isResolve, sleep, withDeadline, withCancel } from '../src/promise'
+import { isPending, isReject, isResolve, sleep, withDeadline, withCancel, withParent } from '../src/promise'
 
 describe('promise', () => {
   describe('state', () => {
@@ -101,5 +101,59 @@ describe('promise', () => {
         expect(v).toBe('p2')
       })
     })
+  })
+
+  test('withParent', async () => {
+    const resolveParent = new Promise<string>(async (resolve) => {
+      await sleep(1000)
+      resolve('resolveParent')
+    })
+
+    const childP1 = withParent(resolveParent)
+    expect(await isPending(resolveParent)).toBe(true)
+    expect(await isPending(childP1)).toBe(true)
+    await sleep(1000)
+    expect(await isResolve(resolveParent)).toBe(true)
+    expect(await isResolve(childP1)).toBe(true)
+    resolveParent.then(v => expect(v).toBe('resolveParent'))
+    childP1.then(v => expect(v).toBe('resolveParent'))
+
+    const rejectParent = new Promise<string>(async (_, reject) => {
+      await sleep(1000)
+      reject('rejectParent')
+    })
+    const childP2 = withParent(rejectParent)
+    expect(await isPending(rejectParent)).toBe(true)
+    expect(await isPending(childP2)).toBe(true)
+    await sleep(1000)
+    expect(await isReject(rejectParent)).toBe(true)
+    expect(await isReject(childP2)).toBe(true)
+
+    const p1 = new Promise<string>(async (resolve) => {
+      await sleep(1000)
+      resolve('resolve')
+    })
+    const deadlineParent = withDeadline(p1, 500, 'deadline')
+    const childP3 = withParent(deadlineParent)
+    expect(await isPending(deadlineParent)).toBe(true)
+    expect(await isPending(childP3)).toBe(true)
+    expect(await isPending(p1)).toBe(true)
+    await sleep(500)
+    expect(await isResolve(deadlineParent)).toBe(true)
+    expect(await isResolve(childP3)).toBe(true)
+    expect(await isPending(p1)).toBe(true)
+
+    const p2 = new Promise<string>(async (resolve) => {
+      await sleep(1000)
+      resolve('resolve')
+    })
+    const { promise: cancelParent, cancel} = withCancel(p2)
+    const childP4 = withParent(cancelParent)
+    expect(await isPending(cancelParent)).toBe(true)
+    expect(await isPending(childP4)).toBe(true)
+    expect(await isPending(p2)).toBe(true)
+    cancel()
+    expect(await isResolve(cancelParent)).toBe(true)
+    expect(await isResolve(childP4)).toBe(true)
   })
 })

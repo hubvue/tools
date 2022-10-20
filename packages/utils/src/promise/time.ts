@@ -5,7 +5,6 @@
  */
 export const sleep = (time: number) => new Promise((resolve) => setTimeout(resolve, time))
 
-
 const deadlineSleepHandler = async <T>(time: number, target: T) => {
   await sleep(time)
   return target

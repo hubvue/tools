@@ -21,3 +21,23 @@ const deadlineSleepHandler = async <T>(time: number, target: T) => {
 export const withDeadline = <T extends unknown, V extends unknown = unknown>(p: Promise<T>, time: number, value?: V) => {
   return Promise.race([p, deadlineSleepHandler(time, value)]).then(v => v)
 }
+
+interface CancelContext<T> {
+  promise: Promise<T | undefined>
+  cancel: () => void
+}
+export const withCancel = <T extends unknown>(p: Promise<T>): CancelContext<T> => {
+  type Resolve = (value?: T) => void
+  let resolveFn: Resolve| null = null
+  const cancel = () => {
+    resolveFn && resolveFn()
+  }
+  const newp = new Promise<T | undefined>((resolve, reject) => {
+    resolveFn = resolve
+    p.then(resolve, reject)
+  })
+  return {
+    promise: newp,
+    cancel
+  }
+}

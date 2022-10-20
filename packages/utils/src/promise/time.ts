@@ -46,3 +46,12 @@ export const withCancel = <T extends unknown>(p: Promise<T>): CancelContext<T> =
     cancel
   }
 }
+
+/**
+ * @description parent promise
+ * @param parent Promise
+ * @returns Promise
+ */
+export const withParent = <T extends unknown>(parent: Promise<T>): Promise<T> => {
+  return new Promise<T>((resolve, reject) => parent.then(resolve, reject))
+}

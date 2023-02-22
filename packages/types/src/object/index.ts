@@ -6,4 +6,4 @@ export * from './optional'
 export * from './argRequired'
 export * from './raw'
 export * from './ref'
-
+export * from './path'

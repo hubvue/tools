@@ -8,7 +8,7 @@ import { TupleFirst } from './tupleFirst'
  * @param F unknown
  */
  export type Filter<T extends unknown[], F extends unknown> = _Filter<T, F>
- export type _Filter<T extends unknown[], F extends unknown, R extends unknown[] = []> = 
+type _Filter<T extends unknown[], F extends unknown, R extends unknown[] = []> = 
    Length<T> extends 0
      ? R
      : TupleFirst<T> extends F

@@ -39,3 +39,8 @@ export * as UNumber from './number'
  * @description Promise functions
  */
 export * as UPromise from './promise'
+
+/**
+ * @description Node functions
+ */
+export * as UNode from './node'

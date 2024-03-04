@@ -29,7 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
     "benchmark": "^2.1.4",
-    "bumpp": "8.2.1",
+    "bumpp": "9.4.0",
     "chalk": "^5.0.0",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
